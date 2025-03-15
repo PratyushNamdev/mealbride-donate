@@ -43,7 +43,7 @@ export async function middleware(req: NextRequest) {
     console.log("Decoded -  ", decoded);
     if (!decoded) {
       const res = NextResponse.redirect(new URL("/signin", req.url));
-      res.cookies.delete("token");
+      res.cookies.delete("donate-token");
       return res;
     }
     if (isOnSigninPage) {
