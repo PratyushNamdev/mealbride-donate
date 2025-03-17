@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 const SignInComponent = () => {
 
   const handleGoogleLogin = () => {
-    window.location.href = `http://localhost:3001/mealbridge/authentication/google?state=donor`;
+    window.location.href = `http://localhost:3001/authentication/google?state=donor`;
   };
 
   return (
