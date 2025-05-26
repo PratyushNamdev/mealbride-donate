@@ -34,6 +34,22 @@ export default function SocketProvider({
 
     socketInstance.on("meal_booked", (data) => {
       console.log(data);
+      alert(data.message);
+    });
+
+    socketInstance.on("meal_expired", (data) => {
+      console.log(data);
+      alert(data.message);
+    });
+
+    socketInstance.on("meal_received", (data) => {
+      console.log(data);
+      alert(data.message);
+    });
+
+    socketInstance.on("meal_reservation_cancelled_by_collector", (data) => {
+      console.log(data);
+      alert(data.message);
     });
 
     socketInstance.on("disconnect", () => {
