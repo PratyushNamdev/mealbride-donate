@@ -12,19 +12,30 @@ const SocketContext = createContext<SocketContextType>({ socket: null });
 
 export const useSocket = () => useContext(SocketContext);
 
-export default function SocketProvider({ children }: { children: React.ReactNode }) {
+export default function SocketProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
     const socketInstance = getSocket();
-    socketInstance.connect(); 
+    socketInstance.connect();
 
     socketInstance.on("connect", () => {
       console.log("Connected to WebSocket");
+      const userId = localStorage.getItem("donor_id");
+      if (userId) {
+        socketInstance.emit("donor_connected", userId);
+        console.log("Emitted donor_connected", userId);
+      }
     });
-    socketInstance.on("catchngo" , (data)=>{
-      alert(data);
-    })
+
+    socketInstance.on("meal_booked", (data) => {
+      console.log(data);
+    });
+
     socketInstance.on("disconnect", () => {
       console.log("Disconnected from WebSocket");
     });
@@ -36,5 +47,9 @@ export default function SocketProvider({ children }: { children: React.ReactNode
     };
   }, []);
 
-  return <SocketContext.Provider value={{ socket }}>{children}</SocketContext.Provider>;
+  return (
+    <SocketContext.Provider value={{ socket }}>
+      {children}
+    </SocketContext.Provider>
+  );
 }
