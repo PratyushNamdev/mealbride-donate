@@ -16,10 +16,11 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const donorId = cookieStore.get("donor_id")?.value || null;
+  const token = cookieStore.get("token")?.value || null;
   return (
     <html lang="en">
       <body>
-        <ClientWrapper donorId={donorId}>
+        <ClientWrapper donorId={donorId} token={token}>
           <SocketProvider>{children}</SocketProvider>
         </ClientWrapper>
       </body>
