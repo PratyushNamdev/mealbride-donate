@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import SocketProvider from "@/providers/SocketProvider";
+import SocketProvider from "@/providers/socket_provider";
 import "./globals.css";
 import { cookies } from "next/headers";
 import ClientWrapper from "./client_wrapper";
+import ReactQueryProvider from "@/providers/react_query_provider";
 
 export const metadata: Metadata = {
   title: "MealBridge Donate",
@@ -16,12 +17,14 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const donorId = cookieStore.get("donor_id")?.value || null;
-  const token = cookieStore.get("token")?.value || null;
+  const token = cookieStore.get("donor_token")?.value || null;
   return (
     <html lang="en">
       <body>
         <ClientWrapper donorId={donorId} token={token}>
-          <SocketProvider>{children}</SocketProvider>
+          <SocketProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
+          </SocketProvider>
         </ClientWrapper>
       </body>
     </html>
