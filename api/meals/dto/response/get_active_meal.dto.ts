@@ -11,6 +11,7 @@ export interface GetActiveMealDto {
   country: string;
   postalCode: number;
   preferredTime: string;
+  deliveryDate: string | null;
   expiryDate: string;
   status: "available" | "reserved" | "delivered" | "expired" | "cancelled";
   collectorId: string | null;

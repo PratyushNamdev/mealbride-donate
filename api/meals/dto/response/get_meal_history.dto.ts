@@ -16,6 +16,7 @@ export interface GetMealHistoryDto {
   postalCode: number;
   preferredTime: string;
   expiryDate: string;
+  deliveryDate: string | null;
   status: "delivered" | "expired" | "cancelled";
   collectorId: string | null;
   createdAt: string;

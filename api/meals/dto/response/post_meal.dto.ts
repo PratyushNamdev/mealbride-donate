@@ -11,12 +11,13 @@ export interface PostMealResponseDto {
     state: string;
     country: string;
     postalCode: number;
-    preferredTime: string; // ISO date string
-    expiryDate: string; // ISO date string
+    preferredTime: string;
+    expiryDate: string;
+    deliveryDate: string | null;
     status: "available" | "reserved" | "delivered" | "expired" | "cancelled";
     collectorId: string | null;
-    createdAt: string; // ISO date string
-    updatedAt: string; // ISO date string
+    createdAt: string;
+    updatedAt: string;
     __v: number;
   };
 }
