@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useQueryClient } from "@tanstack/react-query";
 import MealHooks from "@/api/meals/hooks";
+import Link from "next/link";
 
 export default function Home() {
   const {
@@ -63,7 +64,7 @@ export default function Home() {
       state: "Delhi",
       country: "India",
       postalCode: 110077,
-      preferredTime: new Date("2025-06-01T14:00:00Z"),
+      preferredTime: new Date("2025-06-05T14:00:00Z"),
       expiryDate: new Date("2025-06-10T18:00:00Z"),
     });
   };
@@ -83,6 +84,9 @@ export default function Home() {
         disabled={isPending}
       >
         {isPending ? "Posting..." : "Donate Meal"}
+      </Button>
+      <Button className="m-3">
+        <Link href="/profile">Profile</Link>
       </Button>
 
       {isSuccess && <p className="text-green-600">Meal posted successfully!</p>}
