@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SocketProvider from "@/providers/socket_provider";
-import "../globals.css";
 import { cookies } from "next/headers";
 import ClientWrapper from "../client_wrapper";
 import ReactQueryProvider from "@/providers/react_query_provider";
@@ -21,10 +20,7 @@ export default async function RootLayout({
   return (
     <ClientWrapper donorId={donorId} token={token}>
       <SocketProvider>
-        <ReactQueryProvider>
-          Checking
-          {children}
-        </ReactQueryProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </SocketProvider>
     </ClientWrapper>
   );
