@@ -1,8 +1,5 @@
-import { BackButton } from "@atoms";
+import { DonateNowForm } from "./partials";
+
 export default function DonateNow() {
-  return (
-    <div>
-      <BackButton />
-    </div>
-  );
+  return <DonateNowForm />;
 }

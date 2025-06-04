@@ -1,4 +1,6 @@
+import { Toaster } from "@ui";
 import "./globals.css";
+
 export default function RootLayout({
   children,
 }: {
@@ -6,7 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Toaster position="top-left" richColors />
+        {children}
+      </body>
     </html>
   );
 }
