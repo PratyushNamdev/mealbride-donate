@@ -1,4 +1,4 @@
-export interface GetUserProfileResponse {
+export interface GetUserProfileResponseDto {
   _id: string;
   username: string;
   profilePicture: string;

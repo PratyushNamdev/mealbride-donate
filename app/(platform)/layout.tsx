@@ -22,9 +22,9 @@ export default async function RootLayout({
     <ClientWrapper donorId={donorId} token={token}>
       <SocketProvider>
         <ReactQueryProvider>
-          <Header/>
+          <Header />
           {children}
-          </ReactQueryProvider>
+        </ReactQueryProvider>
       </SocketProvider>
     </ClientWrapper>
   );

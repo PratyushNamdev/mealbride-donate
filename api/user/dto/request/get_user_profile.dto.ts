@@ -1,4 +1,4 @@
-export interface GetUserProfileRequest {
+export interface GetUserProfileRequestDto {
   id: string;
   userType: string;
 }
