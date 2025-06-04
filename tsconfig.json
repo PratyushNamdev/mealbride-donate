@@ -24,6 +24,8 @@
       "@ui/*": ["components/ui/*"],
       "@atoms": ["components/atoms"],
       "@atoms/*": ["components/atoms/*"],
+      "@layout": ["components/layout"],
+      "@layout/*": ["components/layout/*"],
       "@/*": ["./*"]
     }
   },

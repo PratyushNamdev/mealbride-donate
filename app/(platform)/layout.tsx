@@ -3,6 +3,7 @@ import SocketProvider from "@/providers/socket_provider";
 import { cookies } from "next/headers";
 import ClientWrapper from "../client_wrapper";
 import ReactQueryProvider from "@/providers/react_query_provider";
+import { Header } from "@layout";
 
 export const metadata: Metadata = {
   title: "MealBridge Donate",
@@ -20,7 +21,10 @@ export default async function RootLayout({
   return (
     <ClientWrapper donorId={donorId} token={token}>
       <SocketProvider>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <Header />
+          {children}
+        </ReactQueryProvider>
       </SocketProvider>
     </ClientWrapper>
   );
