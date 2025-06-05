@@ -1,2 +1,4 @@
 import BackButton from "./BackButton";
-export { BackButton };
+import LogOutButton from "./LogOutButton";
+
+export { BackButton, LogOutButton };

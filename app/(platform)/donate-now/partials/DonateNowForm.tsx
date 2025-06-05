@@ -49,7 +49,7 @@ export default function DonateNowForm() {
         className: "text-black",
         descriptionClassName: "text-black",
       });
-
+      router.push("./my-active-meals");
       form.reset();
       setPreview(null);
     },
