@@ -1,3 +1,9 @@
-export default function MyActiveMeals () {
-    return <div>To Do for Mr. Anshuman</div>
+import { ActiveMeals } from "./partials";
+
+export default function MyActiveMeals() {
+  return (
+    <div>
+      <ActiveMeals />
+    </div>
+  );
 }
