@@ -16,6 +16,7 @@ import { Textarea } from "./textarea";
 import { Label } from "./label";
 import { Switch } from "./switch";
 import { Toaster } from "./sonner";
+import { Skeleton } from "./skeleton";
 
 export {
   Button,
@@ -33,4 +34,5 @@ export {
   SheetTitle,
   SheetTrigger,
   Toaster,
+  Skeleton,
 };
