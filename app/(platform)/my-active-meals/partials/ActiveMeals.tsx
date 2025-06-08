@@ -1,7 +1,6 @@
 "use client";
 import MealHooks from "@/api/meals/hooks";
-import { BackButton } from "@atoms";
-import { MealCard } from "@molecules";
+import { MealCard, NoMealFound } from "@molecules";
 import { Skeleton } from "@ui";
 
 export default function ActiveMeals() {
@@ -20,14 +19,17 @@ export default function ActiveMeals() {
       </div>
     );
   if (isError) return <div>Something went wrong.</div>;
-  return (
-    <>
-      <BackButton />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
-        {data?.map((meal, idx) => (
-          <MealCard key={idx} meal={meal} />
-        ))}
-      </div>
-    </>
-  );
+  if (data && data.length === 0) {
+    <div></div>;
+  } else
+    return (
+      <>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
+          {data?.map((meal, idx) => (
+            <MealCard key={idx} meal={meal} />
+          ))}
+        </div>
+      </>
+    );
+  // return <NoMealFound />;
 }

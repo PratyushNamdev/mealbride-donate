@@ -1,4 +1,5 @@
-import { DonateNowButton } from "./Buttons/DonateNowButton";
+import { DonateNowButton } from "@atoms";
+
 export default function HeroSection() {
   return (
     <div className="max-w-md text-left">

@@ -1,4 +1,5 @@
 import MealBanner from "./MealBanner";
 import MealCard from "./MealCard";
+import NoMealFound from "./NoMealFound";
 
-export { MealBanner, MealCard };
+export { MealBanner, MealCard, NoMealFound };
