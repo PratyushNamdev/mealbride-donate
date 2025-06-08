@@ -20,7 +20,11 @@ export default function ActiveMeals() {
     );
   if (isError) return <div>Something went wrong.</div>;
   if (data && data.length === 0) {
-    <div></div>;
+    return (
+      <div>
+        <NoMealFound />
+      </div>
+    );
   } else
     return (
       <>
@@ -31,5 +35,4 @@ export default function ActiveMeals() {
         </div>
       </>
     );
-  // return <NoMealFound />;
 }
