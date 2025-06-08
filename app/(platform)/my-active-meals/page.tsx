@@ -1,3 +1,11 @@
-export default function MyActiveMeals () {
-    return <div>To Do for Mr. Anshuman</div>
+import { BackButton } from "@atoms";
+import { ActiveMeals } from "./partials";
+
+export default function MyActiveMeals() {
+  return (
+    <>
+      <BackButton /> 
+      <ActiveMeals />
+    </>
+  );
 }
