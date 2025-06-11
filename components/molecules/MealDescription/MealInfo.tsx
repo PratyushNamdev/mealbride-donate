@@ -1,11 +1,11 @@
-import GetActiveMealDetailResponseDto from "@/api/meals/dto/response/get_active_meal_detail.dto";
-import MealAddress from "./partials/MealAddress";
-import MealTime from "./partials/MealTime";
+import GetActiveMealDetailsResponseDto from "@/api/meals/dto/response/get_active_meal_details.dto";
+import MealAddress from "./MealAddress";
+import MealTime from "./MealTime";
 
-export default function MealMeta({
+export default function MealInfo({
   meal,
 }: {
-  meal: GetActiveMealDetailResponseDto;
+  meal: GetActiveMealDetailsResponseDto;
 }) {
   const mealAddress = {
     city: meal.city,

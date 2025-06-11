@@ -1,14 +1,16 @@
 "use client";
 import MealHooks from "@/api/meals/hooks";
-import { CollectorInfo, MealIntro, MealMeta, NoMealFound } from "@molecules";
+import { CollectorInfo, MealDescription, NoMealFound } from "@molecules";
 import CancelBooking from "./Buttons/CancelBooking";
 import CancelDonation from "./Buttons/CancelDonation";
 import { Skeleton } from "@ui";
 
-export default function ActiveMealDetail({ mealId }: { mealId: string }) {
-  const { data, isLoading, isError, error } = MealHooks.useGetActiveMealDetail({
-    mealId,
-  });
+export default function ActiveMealDetails({ mealId }: { mealId: string }) {
+  const { data, isLoading, isError, error } = MealHooks.useGetActiveMealDetails(
+    {
+      mealId,
+    }
+  );
 
   if (isLoading)
     return (
@@ -34,19 +36,13 @@ export default function ActiveMealDetail({ mealId }: { mealId: string }) {
     );
   //TODO: decide how to handle these errors in appplication
 
-  if (!data)
-    return (
-      <>
-        <NoMealFound />
-      </>
-    );
+  if (!data) return <NoMealFound />;
 
   const isActive = Date.now() < new Date(data.expiryDate).getTime();
 
   return (
     <div className="max-w-2xl mx-auto px-2">
-      <MealIntro meal={data} />
-      <MealMeta meal={data} />
+      <MealDescription meal={data} />
       {data.collector && <CollectorInfo collector={data.collector} />}
       {isActive && (
         <div className="flex flex-col sm:flex-row gap-3 mb-15 mt-2">

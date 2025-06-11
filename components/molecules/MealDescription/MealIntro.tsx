@@ -1,13 +1,12 @@
-import GetActiveMealDetailResponseDto from "@/api/meals/dto/response/get_active_meal_detail.dto";
-import { cn } from "@/lib/utils";
-import { Badge, Card, CardContent } from "@ui";
-import { Calendar, Leaf, User, Users } from "lucide-react";
+import GetActiveMealDetailsResponseDto from "@/api/meals/dto/response/get_active_meal_details.dto";
+import { Card, CardContent } from "@ui";
+import { Calendar, Users } from "lucide-react";
 import { format } from "date-fns";
 import { StatusBadge, VegBadge } from "@atoms";
 export default function MealIntro({
   meal,
 }: {
-  meal: GetActiveMealDetailResponseDto;
+  meal: GetActiveMealDetailsResponseDto;
 }) {
   return (
     <Card className="my-2">

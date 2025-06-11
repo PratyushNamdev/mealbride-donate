@@ -1,15 +1,7 @@
 import MealBanner from "./MealBanner";
 import MealCard from "./MealCard";
 import NoMealFound from "./NoMealFound";
-import MealIntro from "./MealIntro";
-import MealMeta from "./MealMeta";
+import MealDescription from "./MealDescription";
 import CollectorInfo from "./CollectorInfo";
 
-export {
-  MealBanner,
-  MealCard,
-  NoMealFound,
-  MealIntro,
-  MealMeta,
-  CollectorInfo,
-};
+export { MealBanner, MealCard, NoMealFound, MealDescription, CollectorInfo };

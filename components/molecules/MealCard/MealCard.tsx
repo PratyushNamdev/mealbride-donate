@@ -25,8 +25,8 @@ export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
 
       <div className="p-5 flex flex-col gap-4">
         <div className="flex justify-between items-center">
-          <StatusBadge status={meal.status}/>
-          <VegBadge isVeg={meal.veg}/>
+          <StatusBadge status={meal.status} />
+          <VegBadge isVeg={meal.veg} />
         </div>
 
         <div className="flex items-center gap-2 text-sm text-gray-700">

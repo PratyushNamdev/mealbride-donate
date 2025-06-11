@@ -4,7 +4,7 @@ import { ActiveMeals } from "./partials";
 export default function MyActiveMeals() {
   return (
     <>
-      <BackButton /> 
+      <BackButton className="sm:mb-2 m-4" />
       <ActiveMeals />
     </>
   );

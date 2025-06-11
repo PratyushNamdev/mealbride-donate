@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { User, Phone, Mail, Star, Calendar } from "lucide-react";
+import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
 
 interface CollectorInfoProps {
@@ -10,17 +10,12 @@ interface CollectorInfoProps {
     username: string;
     profilePicture: string;
     collectionCount: number;
-    email: string;
+    contact: number;
     createdAt: string;
   } | null;
 }
 
 export function CollectorInfo({ collector }: CollectorInfoProps) {
-  // Debug: Log the profile picture URL
-  console.log("Profile Picture URL:", collector?.profilePicture);
-  console.log("Full collector data:", collector);
-
-  // Helper function to get initials safely
   const getInitials = (name: string) => {
     if (!name) return "?";
     return name
@@ -28,7 +23,7 @@ export function CollectorInfo({ collector }: CollectorInfoProps) {
       .map((n) => n[0])
       .join("")
       .toUpperCase()
-      .slice(0, 2); // Limit to 2 characters
+      .slice(0, 2);
   };
 
   return (
@@ -78,8 +73,8 @@ export function CollectorInfo({ collector }: CollectorInfoProps) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           <div className="flex items-center gap-2 text-gray-600">
-            <Mail className="h-4 w-4 text-green-500" />
-            <span>{collector?.email || "No email"}</span>
+            <PhoneIcon className="h-4 w-4 text-green-500" />
+            <span>+91-{collector?.contact || "No Contact"}</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600 sm:col-span-2">
             <Calendar className="h-4 w-4 text-green-500" />

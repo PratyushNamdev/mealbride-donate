@@ -1,13 +1,13 @@
 import { GetActiveMealDto } from "./get_active_meals.dto";
 
-interface GetActiveMealDetailResponseDto extends GetActiveMealDto {
+interface GetActiveMealDetailsResponseDto extends GetActiveMealDto {
   collector: {
     username: string;
     profilePicture: string;
     collectionCount: number;
-    email: string;
+    contact: number;
     createdAt: string;
   } | null;
 }
 
-export default GetActiveMealDetailResponseDto;
+export default GetActiveMealDetailsResponseDto;

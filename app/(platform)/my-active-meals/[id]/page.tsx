@@ -1,7 +1,7 @@
 import { BackButton } from "@atoms";
-import ActiveMealDetail from "./partials/ActiveMealDetail";
+import ActiveMealDetails from "./partials/ActiveMealDetails";
 
-export default async function MyActiveMealDetail({
+export default async function MyActiveMealDetails({
   params,
 }: {
   params: { id: string };
@@ -10,8 +10,8 @@ export default async function MyActiveMealDetail({
 
   return (
     <>
-      <BackButton />
-      <ActiveMealDetail mealId={id} />
+      <BackButton className="sm:mb-2 m-4" />
+      <ActiveMealDetails mealId={id} />
     </>
   );
 }
