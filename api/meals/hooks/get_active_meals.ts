@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
 import MealsAPI from "..";
-import { GetActiveMealsResponseDto } from "../dto/response/get_active_meal.dto";
+import { GetActiveMealsResponseDto } from "../dto/response/get_active_meals.dto";
 
 export const useGetActiveMeals = (
   options?: UseQueryOptions<GetActiveMealsResponseDto, Error>
