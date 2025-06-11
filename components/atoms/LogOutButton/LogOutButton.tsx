@@ -10,6 +10,8 @@ export default function LogOutButton() {
   const handleLogout = async () => {
     toast.loading("Logging out...");
     await fetch("/api/logout");
+    localStorage.removeItem("donor_id");
+    localStorage.removeItem("donor_token");
     router.push("/signin");
     toast.dismiss();
   };

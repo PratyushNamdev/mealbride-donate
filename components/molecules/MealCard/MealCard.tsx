@@ -1,6 +1,6 @@
-import { GetActiveMealDto } from "@/api/meals/dto/response/get_active_meal.dto";
+import { GetActiveMealDto } from "@/api/meals/dto/response/get_active_meals.dto";
 import { cn } from "@/lib/utils";
-import { GetDetails } from "@atoms";
+import { GetDetails, StatusBadge, VegBadge } from "@atoms";
 import { Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,30 +25,8 @@ export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
 
       <div className="p-5 flex flex-col gap-4">
         <div className="flex justify-between items-center">
-          <span
-            className={cn(
-              "text-xs font-semibold uppercase px-3 py-1 rounded-full",
-              meal.status === "available"
-                ? "bg-green-50 text-green-800"
-                : "bg-yellow-50 text-yellow-800"
-            )}
-          >
-            {meal.status === "available" ? "Available" : "Reserved"}
-          </span>
-
-          <div className="flex items-center gap-2">
-            <span
-              className={cn(
-                "w-4 h-4 rounded-full border-2",
-                meal.veg
-                  ? "bg-green-600 border-green-700"
-                  : "bg-red-500 border-red-600"
-              )}
-            />
-            <span className="text-xs font-medium text-gray-700">
-              {meal.veg ? "Veg" : "Non-Veg"}
-            </span>
-          </div>
+          <StatusBadge status={meal.status} />
+          <VegBadge isVeg={meal.veg} />
         </div>
 
         <div className="flex items-center gap-2 text-sm text-gray-700">
@@ -63,7 +41,10 @@ export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
           {meal.foodDesc.length > 30 ? (
             <>
               {meal.foodDesc.slice(0, 30)}...
-              <Link href={`/`} className="text-[#00734a] font-semibold">
+              <Link
+                href={`/my-active-meals/${meal._id}`}
+                className="text-[#00734a] font-semibold"
+              >
                 {" "}
                 view more
               </Link>
@@ -73,7 +54,7 @@ export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
           )}
         </p>
         <div>
-          <GetDetails />
+          <GetDetails id={meal._id} />
         </div>
       </div>
     </div>

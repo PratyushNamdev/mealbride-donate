@@ -12,9 +12,11 @@ import Image from "next/image";
 import { BackButton } from "@atoms";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function DonateNowForm() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const form = useForm<PostMealRequestDto>({
     mode: "onBlur",
     defaultValues: {
@@ -52,6 +54,7 @@ export default function DonateNowForm() {
       router.push("./my-active-meals");
       form.reset();
       setPreview(null);
+      queryClient.invalidateQueries({ queryKey: ["get-active-meal"] });
     },
     onError: (error) => {
       toast.error(error.message);
