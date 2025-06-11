@@ -17,7 +17,7 @@ export default function VegBadge({ isVeg }: { isVeg: boolean }) {
       ) : (
         <Flame className="h-3 w-3 mr-1" />
       )}
-      {isVeg ? "Vegetarian" : "Non-Vegetarian"}
+      {isVeg ? "Vegetarian" : "Non-Veg"}
     </Badge>
   );
 }

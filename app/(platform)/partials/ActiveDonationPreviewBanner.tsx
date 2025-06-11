@@ -25,7 +25,7 @@ export default function ActiveDonationPreviewBanner() {
 
       {data[1] && (
         <div
-          className="hidden sm:block w-full max-w-[400px] cursor-pointer"
+          className="hidden lg:block w-full max-w-[400px] cursor-pointer"
           onClick={handleClick}
         >
           <MealBanner meal={data[1]} />
@@ -34,7 +34,7 @@ export default function ActiveDonationPreviewBanner() {
 
       {data[2] && (
         <div
-          className="hidden lg:block w-full max-w-[400px] cursor-pointer"
+          className="hidden xl:block w-full max-w-[400px] cursor-pointer"
           onClick={handleClick}
         >
           <MealBanner meal={data[2]} />

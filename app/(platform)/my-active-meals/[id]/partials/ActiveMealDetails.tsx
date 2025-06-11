@@ -14,15 +14,17 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
 
   if (isLoading)
     return (
-      <div className="max-w-2xl mx-auto mt-2">
-        <Skeleton className="w-full h-100" />
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 my-2">
-          <Skeleton className="h-60" />
-          <Skeleton className="h-60" />
-        </div>
-        <div className="flex flex-col sm:flex-row gap-3 mb-15 mt-2">
-          <Skeleton className="h-10 w-full" />
-          <Skeleton className="h-10 w-full" />
+      <div className="min-h-[70vh] flex justify-center items-center">
+        <div className="max-w-2xl m-4 flex flex-col items-center w-full">
+          <Skeleton className="w-full h-100 bg-gray-100" />
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 my-2">
+            <Skeleton className="h-60 bg-gray-100" />
+            <Skeleton className="h-60 bg-gray-100" />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 mb-15 mt-2 w-full">
+            <Skeleton className="h-10 w-full bg-gray-100" />
+            <Skeleton className="h-10 w-full bg-gray-100" />
+          </div>
         </div>
       </div>
     );
@@ -41,7 +43,7 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
   const isActive = Date.now() < new Date(data.expiryDate).getTime();
 
   return (
-    <div className="max-w-2xl mx-auto px-2">
+    <div className="max-w-2xl mx-2 sm:mx-auto px-2">
       <MealDescription meal={data} />
       {data.collector && <CollectorInfo collector={data.collector} />}
       {isActive && (

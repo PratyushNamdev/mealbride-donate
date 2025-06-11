@@ -33,7 +33,7 @@ export default function CancelDonation({ mealId }: { mealId: string }) {
   return (
     <Button
       variant="destructive"
-      className="flex-1 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50  cursor-pointer"
+      className="flex-1 shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 cursor-pointer"
       onClick={handleCancelDonation}
       disabled={isPending}
     >

@@ -5,7 +5,7 @@ import { StatusBadge, VegBadge } from "@atoms";
 
 export default function MealBanner({ meal }: { meal: GetActiveMealDto }) {
   return (
-    <div className="flex items-start w-full gap-3 rounded-xl border border-[#005e38] bg-[#f3fef9] shadow-md hover:shadow-lg transition-shadow p-3">
+    <div className="flex items-start w-full gap-2 rounded-xl border border-[#005e38] bg-[#f3fef9] shadow-md hover:shadow-lg transition-shadow p-3">
       <div className="shrink-0 w-12 h-12">
         <Image
           src={meal.image}

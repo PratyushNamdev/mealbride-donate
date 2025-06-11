@@ -5,34 +5,44 @@ import { Skeleton } from "@ui";
 
 export default function ActiveMeals() {
   const { data, isPending, isError } = MealHooks.useGetActiveMeals();
-  if (isPending)
+
+  if (isPending) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
-        {Array.from({ length: 4 }, (_, i) => {
-          return (
-            <Skeleton
-              key={i}
-              className="w-full max-w-xs mx-auto h-80 rounded-2xl"
-            />
-          );
-        })}
+      <div className="flex flex-wrap justify-center gap-6 px-4 py-8 max-w-[1300px] mx-auto">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="w-full sm:w-[48%] md:w-[30%] flex justify-center"
+          >
+            <Skeleton className="w-full max-w-[360px] h-80 rounded-2xl bg-gray-100" />
+          </div>
+        ))}
       </div>
     );
-  if (isError) return <div>Something went wrong.</div>;
-  if (data && data.length === 0) {
+  }
+
+  if (isError) {
     return (
-      <div>
-        <NoMealFound />
+      <div className="text-center text-red-600 py-10 font-medium">
+        Something went wrong. Please try again later.
       </div>
     );
-  } else
-    return (
-      <>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
-          {data?.map((meal, idx) => (
-            <MealCard key={idx} meal={meal} />
-          ))}
+  }
+
+  if (!data || data.length === 0) {
+    return <NoMealFound />;
+  }
+
+  return (
+    <div className="flex flex-wrap justify-center gap-6 px-4 py-8 max-w-[1300px] mx-auto">
+      {data?.map((meal, idx) => (
+        <div
+          key={idx}
+          className="w-full sm:w-[48%] md:w-[30%] flex justify-center"
+        >
+          <MealCard meal={meal} />
         </div>
-      </>
-    );
+      ))}
+    </div>
+  );
 }
