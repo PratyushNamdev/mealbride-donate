@@ -1,4 +1,4 @@
-import MealHooks from "@/api/meals/hooks";
+import MealHooks from "@MealHooks";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@ui";
 import { X, Loader2 } from "lucide-react";

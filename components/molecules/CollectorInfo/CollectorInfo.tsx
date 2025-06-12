@@ -4,8 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
-
+import Link from "next/link";
 interface CollectorInfoProps {
+  collectorId: string;
   collector: {
     username: string;
     profilePicture: string;
@@ -15,7 +16,7 @@ interface CollectorInfoProps {
   } | null;
 }
 
-export function CollectorInfo({ collector }: CollectorInfoProps) {
+export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
   const getInitials = (name: string) => {
     if (!name) return "?";
     return name
@@ -88,11 +89,12 @@ export function CollectorInfo({ collector }: CollectorInfoProps) {
             </span>
           </div>
         </div>
-
-        <Button className="w-full bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg transition-all duration-200">
-          <User className="h-4 w-4 mr-2" />
-          Visit Profile
-        </Button>
+        <Link href={`/profile/collector/${collectorId}`}>
+          <Button className="w-full bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer">
+            <User className="h-4 w-4 mr-2" />
+            Visit Profile
+          </Button>{" "}
+        </Link>
       </CardContent>
     </Card>
   );

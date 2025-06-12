@@ -3,8 +3,8 @@ import MealHooks from "@MealHooks";
 import { MealCard, NoMealFound } from "@molecules";
 import { Skeleton } from "@ui";
 
-export default function ActiveMeals() {
-  const { data, isPending, isError } = MealHooks.useGetActiveMeals();
+export default function MealsHistory() {
+  const { data, isPending, isError } = MealHooks.useGetMealHistory();
 
   if (isPending) {
     return (
@@ -40,7 +40,7 @@ export default function ActiveMeals() {
           key={idx}
           className="w-full sm:w-[48%] md:w-[30%] flex justify-center"
         >
-          <MealCard meal={meal} endpoint="/my-active-meals" />
+          <MealCard meal={meal} endpoint="my-meals-history" />
         </div>
       ))}
     </div>

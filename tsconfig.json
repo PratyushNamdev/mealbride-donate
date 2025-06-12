@@ -28,6 +28,8 @@
       "@molecules/*": ["components/molecules/*"],
       "@layout": ["components/layout"],
       "@layout/*": ["components/layout/*"],
+      "@MealHooks": ["api/meals/hooks"],
+      "@MealHooks/*": ["api/meals/hooks/*"],
       "@/*": ["./*"]
     }
   },
