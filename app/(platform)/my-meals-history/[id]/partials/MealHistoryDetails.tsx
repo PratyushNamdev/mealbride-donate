@@ -1,21 +1,16 @@
 "use client";
 import MealHooks from "@MealHooks";
 import { CollectorInfo, MealDescription, NoMealFound } from "@molecules";
-import CancelBooking from "./Buttons/CancelBooking";
-import CancelDonation from "./Buttons/CancelDonation";
 import { Skeleton } from "@ui";
 import { useRouter } from "next/navigation";
-
-export default function ActiveMealDetails({ mealId }: { mealId: string }) {
+export default function MealHistoryDetails({ mealId }: { mealId: string }) {
   const router = useRouter();
-
-  const { data, isPending, isError, error } = MealHooks.useGetActiveMealDetails(
-    {
+  const { data, isLoading, isError, error } =
+    MealHooks.useGetMealHistoryDetails({
       mealId,
-    }
-  );
+    });
 
-  if (isPending)
+  if (isLoading)
     return (
       <div className="min-h-[70vh] flex justify-center items-center">
         <div className="max-w-2xl m-4 flex flex-col items-center w-full">
@@ -36,37 +31,27 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
     const customError = error as unknown as { status: number; message: string };
 
     if (customError.status === 409) {
-      router.push(`/my-meals-history/${mealId}`);
+      router.push(`/my-active-meals/${mealId}`);
       return null;
     }
-    if (error.message) {
-      return (
-        <div>
-          error occurred...
-          <span>{error.message}</span>
-        </div>
-      );
-    }
+    return (
+      <div>
+        error occurred...
+        <span>{error?.message}</span>
+      </div>
+    );
   }
 
   if (!data) return <NoMealFound />;
 
-  const isActive = Date.now() < new Date(data.expiryDate).getTime();
-
   return (
-    <div className="max-w-2xl mx-2 sm:mx-auto px-2">
+    <div className="max-w-2xl mx-2 sm:mx-auto px-2 mb-8">
       <MealDescription meal={data} />
       {data.collector && data.collectorId && (
         <CollectorInfo
           collector={data.collector}
           collectorId={data.collectorId}
         />
-      )}
-      {isActive && (
-        <div className="flex flex-col sm:flex-row gap-3 mb-15 mt-2">
-          <CancelDonation mealId={mealId} />
-          <CancelBooking mealId={mealId} booked={!!data.collectorId} />
-        </div>
       )}
     </div>
   );

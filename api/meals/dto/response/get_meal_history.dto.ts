@@ -1,7 +1,3 @@
-export interface GetMealHistoryResponseDto {
-  meals: GetMealHistoryDto[];
-}
-
 export interface GetMealHistoryDto {
   _id: string;
   image: string;
@@ -21,4 +17,7 @@ export interface GetMealHistoryDto {
   collectorId: string | null;
   createdAt: string;
   updatedAt: string;
+  version: number;
 }
+
+export type GetMealHistoryResponseDto = GetMealHistoryDto[];

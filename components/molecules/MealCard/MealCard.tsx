@@ -4,7 +4,13 @@ import { Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
+export default function MealCard({
+  meal,
+  endpoint,
+}: {
+  meal: GetActiveMealDto;
+  endpoint: string;
+}) {
   return (
     <div
       className="group bg-white border border-gray-200 rounded-2xl shadow-md 
@@ -54,7 +60,7 @@ export default function MealCard({ meal }: { meal: GetActiveMealDto }) {
         </p>
 
         <div className="mt-auto">
-          <GetDetails id={meal._id} />
+          <GetDetails id={meal._id} endpoint={endpoint} />
         </div>
       </div>
     </div>
