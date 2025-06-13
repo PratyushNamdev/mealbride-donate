@@ -1,27 +1,41 @@
-// ! Depriciated
+import { Card, CardContent, CardHeader, CardTitle, Button } from "@ui";
+import { MapPin, PencilIcon } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@ui";
-import { MapPin } from "lucide-react";
-
-interface mealAddress {
-  city: string;
-  state: string;
-  country: string;
-  address: string;
-  postalCode: string;
+interface AddressCardProps {
+  mealAddress: {
+    city: string;
+    state: string;
+    country: string;
+    address: string;
+    postalCode: string;
+  };
+  isEditable?: boolean;
+  onEdit?: () => void;
 }
-export default function MealAddress({
+
+export default function AddressCard({
   mealAddress,
-}: {
-  mealAddress: mealAddress;
-}) {
+  isEditable = false,
+  onEdit,
+}: AddressCardProps) {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-green-700 flex items-center gap-2">
           <MapPin className="h-5 w-5" />
           Location Details
         </CardTitle>
+        {isEditable && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onEdit}
+            className="text-sm cursor-pointer"
+          >
+            <PencilIcon className="h-4 w-4 mr-1" />
+            Edit Address
+          </Button>
+        )}
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="space-y-2">

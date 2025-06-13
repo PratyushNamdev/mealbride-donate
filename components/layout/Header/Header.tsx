@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useGetUserProfile } from "@/api/user/hooks/get_user_profile";
+import UserHooks from "@UserHooks";
 import { HeaderNavLinks } from "./HeaderNavLinks";
 import { MobileMenuDrawer } from "./MobileMenuDrawer";
 
 export default function Header() {
-  const [userId, setUserId] = useState("");
+  const [donorId, setDonorId] = useState("");
   const userType = "donor";
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
@@ -21,17 +21,17 @@ export default function Header() {
 
   useEffect(() => {
     const id = localStorage.getItem("donor_id");
-    if (id) setUserId(id);
+    if (id) setDonorId(id);
   }, []);
 
-  const { data } = useGetUserProfile({ id: userId, userType });
+  const { data } = UserHooks.useGetUserProfile({ id: donorId, userType });
 
   return (
     <nav className="w-full h-[10dvh] px-8 md:px-20 py-4 flex items-center justify-between bg-white">
       <div className="font-bold text-gray-700 text-lg select-none">
         MealBridge
       </div>
-      <HeaderNavLinks />
+      <HeaderNavLinks  donorId = {donorId}/>
       <div className="sm:hidden">
         <MobileMenuDrawer
           userData={data}

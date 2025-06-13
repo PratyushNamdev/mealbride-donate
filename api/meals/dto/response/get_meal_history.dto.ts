@@ -9,7 +9,7 @@ export interface GetMealHistoryDto {
   city: string;
   state: string;
   country: string;
-  postalCode: number;
+  postalCode: string;
   preferredTime: string;
   expiryDate: string;
   deliveryDate: string | null;

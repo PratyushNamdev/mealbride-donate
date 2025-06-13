@@ -30,6 +30,12 @@
       "@layout/*": ["components/layout/*"],
       "@MealHooks": ["api/meals/hooks"],
       "@MealHooks/*": ["api/meals/hooks/*"],
+      "@UserHooks": ["api/user/hooks"],
+      "@UserHooks/*": ["api/user/hooks/*"],
+      "@DonorHooks": ["api/donor/hooks"],
+      "@DonorHooks/*": ["api/donor/hooks/*"],
+      "@lib": ["lib"],
+      "@lib/*": ["lib/*"],
       "@/*": ["./*"]
     }
   },

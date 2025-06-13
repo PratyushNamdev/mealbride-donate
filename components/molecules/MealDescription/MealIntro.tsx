@@ -22,7 +22,7 @@ export default function MealIntro({
         </div>
       </div>
       <CardContent>
-        <p className="my-2 text-gray-600 font-semibold text-lg">
+        <p className="my-2 text-[#005e38] font-semibold text-lg">
           {meal.foodDesc}
         </p>
         <div className="flex items-center gap-4 flex-wrap">

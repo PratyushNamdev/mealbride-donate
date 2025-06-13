@@ -28,6 +28,18 @@ import {
 import { Badge, badgeVariants } from "./badge";
 import { Separator } from "./separator";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+} from "./dialog";
 
 export {
   Button,
@@ -59,4 +71,14 @@ export {
   Avatar,
   AvatarFallback,
   AvatarImage,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
 };
