@@ -1,7 +1,7 @@
 import { GetActiveMealDetailsResponseDto } from "@/api/meals/dto/response/get_active_meal_details.dto";
 import MealAddress from "./MealAddress";
 import MealTime from "./MealTime";
-
+import { AddressCard } from "@molecules";
 export default function MealInfo({
   meal,
 }: {
@@ -22,7 +22,8 @@ export default function MealInfo({
   };
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-      <MealAddress mealAddress={mealAddress} />
+      {/* <MealAddress mealAddress={mealAddress} /> */}
+      <AddressCard mealAddress={mealAddress} />
       <MealTime mealTime={mealTime} />
     </div>
   );

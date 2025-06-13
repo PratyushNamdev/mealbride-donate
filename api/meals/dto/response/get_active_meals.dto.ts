@@ -9,7 +9,7 @@ export interface GetActiveMealDto {
   city: string;
   state: string;
   country: string;
-  postalCode: number;
+  postalCode: string;
   preferredTime: string;
   deliveryDate: string | null;
   expiryDate: string;

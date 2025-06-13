@@ -1,7 +1,7 @@
 import { useGetUserProfile } from "./get_user_profile";
 
-const userHooks = {
+const UserHooks = {
   useGetUserProfile,
 };
 
-export default userHooks;
+export default UserHooks;

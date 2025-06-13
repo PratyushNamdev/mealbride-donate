@@ -34,14 +34,9 @@ export default function ActiveMeals() {
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 px-4 py-8 max-w-[1300px] mx-auto">
+    <div className="grid gap-6 px-4 py-8 max-w-[1300px] mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {data?.map((meal, idx) => (
-        <div
-          key={idx}
-          className="w-full sm:w-[48%] md:w-[30%] flex justify-center"
-        >
-          <MealCard meal={meal} endpoint="/my-active-meals" />
-        </div>
+        <MealCard key={idx} meal={meal} endpoint="/my-active-meals" />
       ))}
     </div>
   );
