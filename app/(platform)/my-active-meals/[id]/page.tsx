@@ -4,7 +4,7 @@ import ActiveMealDetails from "./partials/ActiveMealDetails";
 export default async function MyActiveMealDetails({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
 

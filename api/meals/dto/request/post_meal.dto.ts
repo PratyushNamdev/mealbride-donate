@@ -12,10 +12,11 @@ export const postMealRequestSchema = z.object({
   city: z.string().min(1, "City is required"),
   state: z.string().min(1, "State is required"),
   country: z.string().min(1, "Country is required"),
-  postalCode: z.number({
-    invalid_type_error: "Postal code must be a number",
-    required_error: "Postal code is required",
-  }),
+  postalCode: z
+    .string({
+      required_error: "Postal code is required",
+    })
+    .min(1, "Postal code is required"),
   preferredTime: z.coerce.date({
     errorMap: () => ({ message: "Preferred time must be a valid date" }),
   }),

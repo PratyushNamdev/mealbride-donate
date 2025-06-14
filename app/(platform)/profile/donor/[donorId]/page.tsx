@@ -3,12 +3,12 @@ import { DonorProfile } from "./partials";
 export default async function DonorProfilePage({
   params,
 }: {
-  params: { donorId: string };
+  params: Promise<{ donorId: string }>;
 }) {
   const { donorId } = await params;
   return (
     <>
-      <BackButton className="sm:ml-4"/>
+      <BackButton className="sm:ml-4" />
       <DonorProfile donorId={donorId} />
     </>
   );

@@ -13,8 +13,13 @@ import { BackButton } from "@atoms";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
+import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
 
-export default function DonateNowForm() {
+interface DonateNowFormProps {
+  profile: GetDonorProfileResponseDTO | null;
+}
+
+export default function DonateNowForm({ profile }: DonateNowFormProps) {
   const router = useRouter();
   const queryClient = useQueryClient();
   const form = useForm<PostMealRequestDto>({
@@ -24,16 +29,17 @@ export default function DonateNowForm() {
       feedsUpto: 0,
       foodDesc: "",
       veg: true,
-      address: "",
-      city: "",
-      state: "",
-      country: "India",
-      postalCode: 0,
+      address: profile?.address?.address ?? "",
+      city: profile?.address?.city ?? "",
+      state: profile?.address?.state ?? "",
+      country: profile?.address?.country ?? "India",
+      postalCode: profile?.address?.postalCode ?? "",
       preferredTime: new Date(),
       expiryDate: new Date(),
     },
     resolver: zodResolver(postMealRequestSchema),
   });
+
   const {
     handleSubmit,
     register,
@@ -154,13 +160,11 @@ export default function DonateNowForm() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  {/* <Label htmlFor="veg">Type</Label> */}
-
                   <div className="flex items-center gap-2">
                     <Switch
                       id="veg"
-                      checked={!watch("veg")} // ON when veg is false (non-veg)
-                      onCheckedChange={(val) => setValue("veg", !val)} // invert the logic
+                      checked={!watch("veg")}
+                      onCheckedChange={(val) => setValue("veg", !val)}
                       className={`
         data-[state=checked]:bg-red-500 
         data-[state=unchecked]:bg-green-500
@@ -240,10 +244,7 @@ export default function DonateNowForm() {
                 </div>
                 <div className="w-full">
                   <Label className="mb-2">Postal Code</Label>
-                  <Input
-                    type="number"
-                    {...register("postalCode", { valueAsNumber: true })}
-                  />
+                  <Input type="text" {...register("postalCode")} />
                   {errors.postalCode && (
                     <p className="text-red-500 text-sm">
                       {errors.postalCode.message}
