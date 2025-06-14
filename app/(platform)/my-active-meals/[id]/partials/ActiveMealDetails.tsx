@@ -40,12 +40,7 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
       return null;
     }
     if (error.message) {
-      return (
-        <div>
-          error occurred...
-          <span>{error.message}</span>
-        </div>
-      );
+      throw new Error("Cannot load the Meal.");
     }
   }
 

@@ -7,12 +7,12 @@ import { toast } from "sonner";
 export default function AddressChecker({
   address,
 }: {
-  address: string | null;
+  address: string | null | undefined;
 }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (address === null) {
+    if (!address) {
       toast("Almost Done", {
         description:
           "Kindly provide your address to help collectors reach you for the pickup.",

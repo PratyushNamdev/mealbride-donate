@@ -21,15 +21,11 @@ export default function ActiveMeals() {
     );
   }
 
-  if (isError) {
-    return (
-      <div className="text-center text-red-600 py-10 font-medium">
-        Something went wrong. Please try again later.
-      </div>
-    );
+  if (isError || !data) {
+    throw new Error("Error fetching active meals");
   }
 
-  if (!data || data.length === 0) {
+  if (data.length === 0) {
     return <NoMealFound />;
   }
 

@@ -1,5 +1,9 @@
 import { DonateNowForm } from "./partials";
+import { getDonorProfileServer } from "@lib";
+import type { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
 
-export default function DonateNow() {
-  return <DonateNowForm />;
+export default async function DonateNow() {
+  const profile: GetDonorProfileResponseDTO | null =
+    await getDonorProfileServer();
+  return <DonateNowForm profile={profile} />;
 }

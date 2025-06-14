@@ -34,12 +34,7 @@ export default function MealHistoryDetails({ mealId }: { mealId: string }) {
       router.push(`/my-active-meals/${mealId}`);
       return null;
     }
-    return (
-      <div>
-        error occurred...
-        <span>{error?.message}</span>
-      </div>
-    );
+    throw new Error("Cannot load the meal.");
   }
 
   if (!data) return <NoMealFound />;

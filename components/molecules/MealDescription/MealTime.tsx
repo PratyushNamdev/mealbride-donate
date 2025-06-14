@@ -10,14 +10,15 @@ interface mealTime {
 export default function MealTime({ mealTime }: { mealTime: mealTime }) {
   const isActive = Date.now() < new Date(mealTime.expiryDate).getTime();
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-green-700 flex items-center gap-2">
+    <Card className="border border-green-200 shadow-lg rounded-xl bg-white">
+      <CardHeader className="flex items-center justify-between px-4 py-1">
+        <CardTitle className="flex items-center gap-2 text-xl font-bold tracking-wide text-[#005e38] leading-tight">
           <Clock className="h-5 w-5" />
           Timing Information
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+
+      <CardContent className="space-y-4 px-4 pb-4">
         <div className="space-y-3">
           <div className="flex justify-between items-start">
             <div className="space-y-1">

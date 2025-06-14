@@ -1,3 +1,4 @@
+import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
 import {
   HeroImage,
   HeroSection,
@@ -7,7 +8,8 @@ import {
 import { getDonorProfileServer } from "@lib";
 
 export default async function Home() {
-  const profile = await getDonorProfileServer();
+  const profile: GetDonorProfileResponseDTO | null =
+    await getDonorProfileServer();
 
   return (
     <div className="h-[90dvh]">
@@ -20,7 +22,7 @@ export default async function Home() {
           <HeroSection />
         </div>
       </div>
-      <AddressChecker address={profile?.data?.address} />
+      <AddressChecker address={profile?.address?.address} />
     </div>
   );
 }
