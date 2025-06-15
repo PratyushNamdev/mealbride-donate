@@ -40,6 +40,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
+import {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from "./drawer";
 
 export {
   Button,
@@ -81,4 +93,14 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
 };
