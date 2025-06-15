@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import SocketProvider from "@/providers/socket_provider";
+import ReactQueryProvider from "@/providers/react_query_provider";
+import { NotificationProvider } from "@/providers/notification_provider";
 import { cookies } from "next/headers";
 import ClientWrapper from "../client_wrapper";
-import ReactQueryProvider from "@/providers/react_query_provider";
 import { Header } from "@layout";
 
 export const metadata: Metadata = {
@@ -20,12 +21,14 @@ export default async function RootLayout({
   const token = cookieStore.get("donor_token")?.value || null;
   return (
     <ClientWrapper donorId={donorId} token={token}>
-      <SocketProvider>
-        <ReactQueryProvider>
-          <Header />
-          {children}
-        </ReactQueryProvider>
-      </SocketProvider>
+      <ReactQueryProvider>
+        <NotificationProvider>
+          <SocketProvider>
+            <Header />
+            {children}
+          </SocketProvider>
+        </NotificationProvider>
+      </ReactQueryProvider>
     </ClientWrapper>
   );
 }

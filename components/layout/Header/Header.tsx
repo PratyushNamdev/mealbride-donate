@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import UserHooks from "@UserHooks";
 import { HeaderNavLinks } from "./HeaderNavLinks";
 import { MobileMenuDrawer } from "./MobileMenuDrawer";
-
+import NotificationDrawer from "./NotificationDrawer";
 export default function Header() {
   const [donorId, setDonorId] = useState("");
   const userType = "donor";
@@ -31,7 +31,7 @@ export default function Header() {
       <div className="font-bold text-gray-700 text-lg select-none">
         MealBridge
       </div>
-      <HeaderNavLinks  donorId = {donorId}/>
+      <HeaderNavLinks donorId={donorId} />
       <div className="sm:hidden">
         <MobileMenuDrawer
           userData={data}
@@ -39,6 +39,7 @@ export default function Header() {
           onChange={setIsSheetOpen}
         />
       </div>
+      <NotificationDrawer />
     </nav>
   );
 }

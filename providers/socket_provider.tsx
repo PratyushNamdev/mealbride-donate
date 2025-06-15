@@ -3,6 +3,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { getSocket } from "@/lib/socket";
 import { Socket } from "socket.io-client";
+import {
+  handleMealBooked,
+  handleMealReservationCancelledByCollector,
+  handleMealExpired,
+  handleMealReceived,
+} from "@Events";
+import { useNotifications } from "./notification_provider";
+import { useQueryClient } from "@tanstack/react-query";
 
 type SocketContextType = {
   socket: Socket | null;
@@ -18,11 +26,11 @@ export default function SocketProvider({
   children: React.ReactNode;
 }) {
   const [socket, setSocket] = useState<Socket | null>(null);
-
+  const { addNotification, setHasUnseenNotifications } = useNotifications();
+  const queryClient = useQueryClient();
   useEffect(() => {
     const socketInstance = getSocket();
     socketInstance.connect();
-
     socketInstance.on("connect", () => {
       console.log("Connected to WebSocket");
       const userId = localStorage.getItem("donor_id");
@@ -33,23 +41,30 @@ export default function SocketProvider({
     });
 
     socketInstance.on("meal_booked", (data) => {
-      console.log(data);
-      alert(data.message);
+      const notification = handleMealBooked(data, queryClient);
+      addNotification(notification);
+      setHasUnseenNotifications(true);
     });
 
     socketInstance.on("meal_expired", (data) => {
-      console.log(data);
-      alert(data.message);
+      const notification = handleMealExpired(data, queryClient);
+      addNotification(notification);
+      setHasUnseenNotifications(true);
     });
 
     socketInstance.on("meal_received", (data) => {
-      console.log(data);
-      alert(data.message);
+      const notification = handleMealReceived(data, queryClient);
+      addNotification(notification);
+      setHasUnseenNotifications(true);
     });
 
     socketInstance.on("meal_reservation_cancelled_by_collector", (data) => {
-      console.log(data);
-      alert(data.message);
+      const notification = handleMealReservationCancelledByCollector(
+        data,
+        queryClient
+      );
+      addNotification(notification);
+      setHasUnseenNotifications(true);
     });
 
     socketInstance.on("disconnect", () => {
