@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
-import Link from "next/link";
+
 interface CollectorInfoProps {
   collectorId: string;
   collector: {
@@ -48,6 +48,7 @@ export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
                   "Image failed to load:",
                   collector?.profilePicture
                 );
+                console.log(e);
               }}
               onLoad={() => {
                 console.log("Image loaded successfully");
@@ -71,7 +72,6 @@ export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
             </div>
           </div>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           <div className="flex items-center gap-2 text-gray-600">
             <PhoneIcon className="h-4 w-4 text-green-500" />
@@ -89,12 +89,10 @@ export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
             </span>
           </div>
         </div>
-        <Link href={`/profile/collector/${collectorId}`}>
-          <Button className="w-full bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer">
-            <User className="h-4 w-4 mr-2" />
-            Visit Profile
-          </Button>{" "}
-        </Link>
+        <Button className="w-full bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer">
+          <User className="h-4 w-4 mr-2" />
+          Confirm Handover
+        </Button>{" "}
       </CardContent>
     </Card>
   );

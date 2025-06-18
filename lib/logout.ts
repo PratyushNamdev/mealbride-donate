@@ -1,7 +1,9 @@
 "use client";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-export async function logout(router: any) {
+type RouterInstance = ReturnType<typeof useRouter>;
+export async function logout(router: RouterInstance) {
   toast.loading("Logging out...");
   await fetch("/api/logout");
   localStorage.removeItem("donor_id");

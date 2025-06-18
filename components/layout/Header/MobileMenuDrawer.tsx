@@ -2,38 +2,57 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@ui";
 import { Skeleton } from "@ui";
-import { History, Home, LogOut, Menu, User } from "lucide-react";
+import { HandPlatter, History, Home, LogOut, Menu } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { logout } from "../../../lib/logout";
+import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
 
-export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
+interface MobileMenuDrawerProps {
+  userData: GetDonorProfileResponseDTO | undefined;
+  isSheetOpen: boolean;
+  setIsSheetOpen: (open: boolean) => void;
+}
+
+export function MobileMenuDrawer({
+  userData,
+  isSheetOpen,
+  setIsSheetOpen,
+}: MobileMenuDrawerProps) {
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const router = useRouter();
 
   const handleLogout = async () => {
-    onChange(false);
+    setIsSheetOpen(false);
     await logout(router);
   };
-
+ 
   const handleAccountClick = () => {
-    onChange(false);
+    setIsSheetOpen(false);
     router.push(`/profile/donor/${userData?._id}`);
   };
 
   const handleHistoryClick = () => {
-    onChange(false);
+    setIsSheetOpen(false);
     router.push(`/my-meals-history`);
   };
 
   const handleHomeClick = () => {
-    onChange(false);
+    setIsSheetOpen(false);
     router.push(`/`);
   };
 
+  const handleMyDonationClick = () => {
+    setIsSheetOpen(false);
+    router.push(`/my-active-meals`);
+  };
+
   return (
-    <Sheet open={isOpen} onOpenChange={onChange}>
-      <SheetTrigger className="cursor-pointer" onClick={() => onChange(true)}>
+    <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+      <SheetTrigger
+        className="cursor-pointer"
+        onClick={() => setIsSheetOpen(true)}
+      >
         <Menu size={24} />
       </SheetTrigger>
 
@@ -42,8 +61,11 @@ export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
           MealBridge
         </SheetTitle>
 
-        <div className="flex flex-col items-center gap-3 mt-2">
-          <div className="relative w-24 h-24" onClick={handleAccountClick}>
+        <div
+          className="flex flex-col items-center gap-3 mt-2"
+          onClick={handleAccountClick}
+        >
+          <div className="relative w-24 h-24 cursor-pointer">
             {!isImgLoaded && (
               <Skeleton className="rounded-full w-full h-full" />
             )}
@@ -61,10 +83,10 @@ export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
             />
           </div>
 
-          <div className="text-[#005e38] font-semibold text-lg truncate max-w-full text-center">
+          <div className="text-[#005e38] font-semibold text-lg truncate max-w-full text-center cursor-pointer">
             {userData?.username || "Anonymous"}
           </div>
-          <div className="text-sm text-gray-600 max-w-full text-center break-words">
+          <div className="text-sm text-gray-600 max-w-full text-center break-words cursor-pointer">
             {userData?.email || "No email available"}
           </div>
         </div>
@@ -73,14 +95,14 @@ export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
           {[
             { icon: <Home />, label: "Home", clickFunction: handleHomeClick },
             {
+              icon: <HandPlatter />,
+              label: "My Donations",
+              clickFunction: handleMyDonationClick,
+            },
+            {
               icon: <History />,
               label: "History",
               clickFunction: handleHistoryClick,
-            },
-            {
-              icon: <User />,
-              label: "Account",
-              clickFunction: handleAccountClick,
             },
             {
               icon: <LogOut />,

@@ -3,6 +3,7 @@ import { Card, CardContent } from "@ui";
 import { Calendar, Users } from "lucide-react";
 import { format } from "date-fns";
 import { StatusBadge, VegBadge } from "@atoms";
+import Image from "next/image";
 export default function MealIntro({
   meal,
 }: {
@@ -11,9 +12,11 @@ export default function MealIntro({
   return (
     <Card className="my-2">
       <div className="relative">
-        <img
+        <Image
           src={meal.image}
           alt={meal.foodDesc}
+          width={300}
+          height={300}
           className="w-full h-84 sm:h-90 object-cover object-center "
         />
         <div className="absolute top-4 left-4 flex gap-2">

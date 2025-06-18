@@ -48,22 +48,20 @@ export default function ProfileFormDialog({
     reset,
   } = form;
 
-  const { mutate: updateAddress, isPending } = DonorHooks.useUpdateDonorProfile(
-    {
-      onSuccess: (data) => {
-        toast.success("Profile updated successfully");
-        queryClient.invalidateQueries({ queryKey: ["get-donor-profile"] });
-        setOpen(false);
-        reset({
-          username: data.username,
-          contact: data.contact ?? "",
-        });
-      },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    }
-  );
+  const { mutate: updateAddress } = DonorHooks.useUpdateDonorProfile({
+    onSuccess: (data) => {
+      toast.success("Profile updated successfully");
+      queryClient.invalidateQueries({ queryKey: ["get-donor-profile"] });
+      setOpen(false);
+      reset({
+        username: data.username,
+        contact: data.contact ?? "",
+      });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
 
   const onSubmit = (data: UpdateDonorProfileRequestDto) => {
     updateAddress(data);

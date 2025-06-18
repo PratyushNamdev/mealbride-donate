@@ -117,26 +117,24 @@ export default function AddressFormDialog({
     );
   };
 
-  const { mutate: updateAddress, isPending } = DonorHooks.useUpdateDonorAddress(
-    {
-      onSuccess: () => {
-        toast.success("Address updated successfully");
-        queryClient.invalidateQueries({ queryKey: ["get-donor-profile"] });
-        setOpen(false);
-        reset({
-          address: "",
-          city: "",
-          state: "",
-          country: "India",
-          postalCode: "",
-          contact: "",
-        });
-      },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    }
-  );
+  const { mutate: updateAddress } = DonorHooks.useUpdateDonorAddress({
+    onSuccess: () => {
+      toast.success("Address updated successfully");
+      queryClient.invalidateQueries({ queryKey: ["get-donor-profile"] });
+      setOpen(false);
+      reset({
+        address: "",
+        city: "",
+        state: "",
+        country: "India",
+        postalCode: "",
+        contact: "",
+      });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
 
   const onSubmit = (data: UpdateDonorAddressRequestDto) => {
     updateAddress(data);
@@ -151,7 +149,7 @@ export default function AddressFormDialog({
           </DialogTitle>
           <DialogDescription className="text-gray-600 mt-1">
             This address will be used by the collector to locate you. Please
-            ensure it's accurate.
+            ensure it&apos;s accurate.
           </DialogDescription>
         </div>
 
