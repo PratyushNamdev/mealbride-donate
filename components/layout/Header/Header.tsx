@@ -1,13 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
-import UserHooks from "@UserHooks";
 import { HeaderNavLinks } from "./HeaderNavLinks";
 import { MobileMenuDrawer } from "./MobileMenuDrawer";
 import NotificationDrawer from "./NotificationDrawer";
+import DonorHooks from "@DonorHooks";
+import { Bell } from "lucide-react";
+import { useNotifications } from "@/providers/notification_provider";
 export default function Header() {
   const [donorId, setDonorId] = useState("");
-  const userType = "donor";
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const { hasUnseenNotifications, setIsDrawerOpen } = useNotifications();
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,11 +22,18 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const id = localStorage.getItem("donor_id");
-    if (id) setDonorId(id);
+    const handleCustomEvent = () => {
+      const id = localStorage.getItem("donor_id");
+      if (id) setDonorId(id);
+    };
+
+    window.addEventListener("id_saved_to_localstorage", handleCustomEvent);
+    return () => {
+      window.removeEventListener("id_saved_to_localstorage", handleCustomEvent);
+    };
   }, []);
 
-  const { data } = UserHooks.useGetUserProfile({ id: donorId, userType });
+  const { data } = DonorHooks.useGetDonorProfile(donorId);
 
   return (
     <nav className="w-full h-[10dvh] px-8 md:px-20 py-4 flex items-center justify-between bg-white">
@@ -32,7 +41,16 @@ export default function Header() {
         MealBridge
       </div>
       <HeaderNavLinks donorId={donorId} />
-      <div className="sm:hidden">
+      <div className="sm:hidden flex items-center gap-4">
+        <div
+          className="relative cursor-pointer"
+          onClick={() => setIsDrawerOpen(true)}
+        >
+          <Bell className="w-5 h-5" />
+          {hasUnseenNotifications && (
+            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-red-500" />
+          )}
+        </div>
         <MobileMenuDrawer
           userData={data}
           isOpen={isSheetOpen}
