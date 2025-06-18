@@ -5,6 +5,7 @@ import { NotificationProvider } from "@/providers/notification_provider";
 import { cookies } from "next/headers";
 import ClientWrapper from "../client_wrapper";
 import { Header } from "@layout";
+import { getDonorProfileServer } from "@lib";
 
 export const metadata: Metadata = {
   title: "MealBridge Donate",
@@ -19,12 +20,18 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const donorId = cookieStore.get("donor_id")?.value || null;
   const token = cookieStore.get("donor_token")?.value || null;
+  const donorProfile = await getDonorProfileServer();
+
+  if (!donorProfile) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <ClientWrapper donorId={donorId} token={token}>
       <ReactQueryProvider>
         <NotificationProvider>
           <SocketProvider>
-            <Header />
+            <Header data={donorProfile} />
             {children}
           </SocketProvider>
         </NotificationProvider>

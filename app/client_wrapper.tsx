@@ -18,7 +18,6 @@ export default function ClientWrapper({
     if (token) {
       localStorage.setItem("donor_token", token);
     }
-    window.dispatchEvent(new Event("id_saved_to_localstorage"));
   }, [donorId]);
 
   return <>{children}</>;
