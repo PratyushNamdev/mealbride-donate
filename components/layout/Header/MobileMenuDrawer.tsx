@@ -4,20 +4,16 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@ui";
 import { Skeleton } from "@ui";
 import { History, Home, LogOut, Menu, User } from "lucide-react";
 import Image from "next/image";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { logout } from "../../../lib/logout";
 
 export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const router = useRouter();
 
   const handleLogout = async () => {
-    toast.loading("Logging out...");
-    await fetch("/api/logout");
-    localStorage.removeItem("donor_id");
-    localStorage.removeItem("donor_token");
-    router.push("/signin");
-    toast.dismiss();
+    onChange(false);
+    await logout(router);
   };
 
   const handleAccountClick = () => {

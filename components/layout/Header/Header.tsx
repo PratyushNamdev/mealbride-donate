@@ -5,13 +5,13 @@ import { MobileMenuDrawer } from "./MobileMenuDrawer";
 import NotificationDrawer from "./NotificationDrawer";
 import { Bell } from "lucide-react";
 import { useNotifications } from "@/providers/notification_provider";
-import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
+import DonorHooks from "@DonorHooks";
 
 type HeaderProps = {
-  data: GetDonorProfileResponseDTO;
+  donorId: string | null;
 };
 
-export default function Header({ data }: HeaderProps) {
+export default function Header({ donorId }: HeaderProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const { hasUnseenNotifications, setIsDrawerOpen } = useNotifications();
 
@@ -25,12 +25,18 @@ export default function Header({ data }: HeaderProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if (donorId === null) {
+    return null;
+  }
+
+  const { data } = DonorHooks.useGetDonorProfile(donorId);
+
   return (
     <nav className="w-full h-[10dvh] px-8 md:px-20 py-4 flex items-center justify-between bg-white">
       <div className="font-bold text-gray-700 text-lg select-none">
         MealBridge
       </div>
-      <HeaderNavLinks donorId={data._id} />
+      <HeaderNavLinks donorId={donorId} />
       <div className="sm:hidden flex items-center gap-4">
         <div
           className="relative cursor-pointer"

@@ -1,19 +1,15 @@
 "use client";
 
+import { logout } from "../../../lib/logout";
 import { Button } from "@ui";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+
 export default function LogOutButton() {
   const router = useRouter();
 
   const handleLogout = async () => {
-    toast.loading("Logging out...");
-    await fetch("/api/logout");
-    localStorage.removeItem("donor_id");
-    localStorage.removeItem("donor_token");
-    router.push("/signin");
-    toast.dismiss();
+    await logout(router);
   };
   return (
     <Button
