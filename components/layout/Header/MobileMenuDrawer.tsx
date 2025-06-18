@@ -4,9 +4,32 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@ui";
 import { Skeleton } from "@ui";
 import { History, Home, LogOut, Menu, User } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { logout } from "../../../lib/logout";
 
 export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
   const [isImgLoaded, setIsImgLoaded] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    onChange(false);
+    await logout(router);
+  };
+
+  const handleAccountClick = () => {
+    onChange(false);
+    router.push(`/profile/donor/${userData?._id}`);
+  };
+
+  const handleHistoryClick = () => {
+    onChange(false);
+    router.push(`/my-meals-history`);
+  };
+
+  const handleHomeClick = () => {
+    onChange(false);
+    router.push(`/`);
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={onChange}>
@@ -20,7 +43,7 @@ export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
         </SheetTitle>
 
         <div className="flex flex-col items-center gap-3 mt-2">
-          <div className="relative w-24 h-24">
+          <div className="relative w-24 h-24" onClick={handleAccountClick}>
             {!isImgLoaded && (
               <Skeleton className="rounded-full w-full h-full" />
             )}
@@ -48,13 +71,26 @@ export function MobileMenuDrawer({ userData, isOpen, onChange }: any) {
 
         <ul className="flex flex-col gap-5 mt-12 text-gray-700 font-semibold px-1">
           {[
-            { icon: <Home />, label: "Home" },
-            { icon: <History />, label: "History" },
-            { icon: <User />, label: "Account" },
-            { icon: <LogOut />, label: "Logout" },
-          ].map(({ icon, label }) => (
+            { icon: <Home />, label: "Home", clickFunction: handleHomeClick },
+            {
+              icon: <History />,
+              label: "History",
+              clickFunction: handleHistoryClick,
+            },
+            {
+              icon: <User />,
+              label: "Account",
+              clickFunction: handleAccountClick,
+            },
+            {
+              icon: <LogOut />,
+              label: "Logout",
+              clickFunction: handleLogout,
+            },
+          ].map(({ icon, label, clickFunction }) => (
             <li
               key={label}
+              onClick={clickFunction}
               className="flex items-center gap-3 px-5 py-3 rounded-md cursor-pointer hover:bg-[#e6f4ea] hover:text-[#005e38] transition-colors duration-300 select-none"
             >
               {icon}
