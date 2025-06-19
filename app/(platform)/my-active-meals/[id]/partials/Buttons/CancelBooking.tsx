@@ -12,11 +12,7 @@ export default function CancelBooking({
   booked: boolean;
 }) {
   const queryClient = useQueryClient();
-  const {
-    mutate: cancelBooking,
-    isPending,
-    isError,
-  } = MealHooks.useDiscardMealBooking({
+  const { mutate: cancelBooking, isPending } = MealHooks.useDiscardMealBooking({
     onSuccess: () => {
       toast.success("Booking cancelled successfully");
       queryClient.invalidateQueries({ queryKey: ["get-active-meal-detail"] });

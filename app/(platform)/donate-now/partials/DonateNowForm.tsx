@@ -52,11 +52,11 @@ export default function DonateNowForm({ profile }: DonateNowFormProps) {
     onMutate: () => {},
     onSuccess: (response) => {
       toast.success("Thanks for Donating!", {
-        description:
-          "Your meal is now listed. A verified collector will soon book it and ensure it reaches someone in need.",
+        description: `Your meal - ${response.meal.foodDesc} - is now listed. A verified collector will soon book it and ensure it reaches someone in need.`,
         className: "text-black",
         descriptionClassName: "text-black",
       });
+
       router.push("./my-active-meals");
       form.reset();
       setPreview(null);

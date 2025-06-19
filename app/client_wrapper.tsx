@@ -18,7 +18,7 @@ export default function ClientWrapper({
     if (token) {
       localStorage.setItem("donor_token", token);
     }
-  }, [donorId]);
+  }, [donorId, token]);
 
   return <>{children}</>;
 }

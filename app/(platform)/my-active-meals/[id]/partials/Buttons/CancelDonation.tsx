@@ -11,13 +11,13 @@ export default function CancelDonation({ mealId }: { mealId: string }) {
   const {
     mutate: cancelDonation,
     isPending,
-    isError,
   } = MealHooks.useCancelMeal({
     onSuccess: () => {
       console.log("Donation cancelled successfully");
       toast.success("Donation cancelled successfully");
       queryClient.invalidateQueries({ queryKey: ["get-active-meal-detail"] });
       queryClient.invalidateQueries({ queryKey: ["get-active-meal"] });
+      queryClient.invalidateQueries({ queryKey: ["get-meal-history"] });
       router.back();
     },
     onError: (error) => {

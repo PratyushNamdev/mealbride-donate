@@ -8,12 +8,13 @@ import { useNotifications } from "@/providers/notification_provider";
 import DonorHooks from "@DonorHooks";
 
 type HeaderProps = {
-  donorId: string | null;
+  donorId: string;
 };
 
 export default function Header({ donorId }: HeaderProps) {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const { hasUnseenNotifications, setIsDrawerOpen } = useNotifications();
+  const { data } = DonorHooks.useGetDonorProfile(donorId);
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,12 +25,6 @@ export default function Header({ donorId }: HeaderProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  if (donorId === null) {
-    return null;
-  }
-
-  const { data } = DonorHooks.useGetDonorProfile(donorId);
 
   return (
     <nav className="w-full h-[10dvh] px-8 md:px-20 py-4 flex items-center justify-between bg-white">
@@ -49,8 +44,8 @@ export default function Header({ donorId }: HeaderProps) {
         </div>
         <MobileMenuDrawer
           userData={data}
-          isOpen={isSheetOpen}
-          onChange={setIsSheetOpen}
+          isSheetOpen={isSheetOpen}
+          setIsSheetOpen={setIsSheetOpen}
         />
       </div>
       <NotificationDrawer />
