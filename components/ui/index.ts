@@ -53,6 +53,13 @@ import {
   DrawerDescription,
 } from "./drawer";
 
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from "./input-otp";
+
 export {
   Button,
   Tooltip,
@@ -103,4 +110,8 @@ export {
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
 };

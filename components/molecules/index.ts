@@ -5,6 +5,8 @@ import MealDescription from "./MealDescription";
 import CollectorInfo from "./CollectorInfo";
 import AddressFormDialog from "./AddressFormDialiog";
 import AddressCard from "./AddressCard";
+import OtpModal from "./OTPModal";
+
 export {
   MealBanner,
   MealCard,
@@ -13,4 +15,5 @@ export {
   CollectorInfo,
   AddressFormDialog,
   AddressCard,
+  OtpModal,
 };
