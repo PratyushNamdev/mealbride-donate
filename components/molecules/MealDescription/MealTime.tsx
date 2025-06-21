@@ -8,7 +8,10 @@ interface mealTime {
   expiryDate: string;
 }
 export default function MealTime({ mealTime }: { mealTime: mealTime }) {
-  const isActive = Date.now() < new Date(mealTime.expiryDate).getTime();
+  const isActive =
+    Date.now() < new Date(mealTime.expiryDate).getTime() &&
+    mealTime.deliveryDate === null;
+
   return (
     <Card className="border border-green-200 shadow-lg rounded-xl bg-white">
       <CardHeader className="flex items-center justify-between px-4 py-1">
