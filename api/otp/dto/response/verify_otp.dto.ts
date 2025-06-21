@@ -1,4 +1,4 @@
-export interface VerifyOtpResponseDto {
+export interface VerifyOTPResponseDto {
   _id: string;
   image: string;
   donorId: string;

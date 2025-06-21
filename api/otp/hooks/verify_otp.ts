@@ -1,13 +1,13 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
-import { VerifyOtpRequestDto } from "../dto/request/verify_otp.dto";
-import { VerifyOtpResponseDto } from "../dto/response/verify_otp.dto";
-import OtpAPI from "..";
+import { VerifyOTPRequestDto } from "../dto/request/verify_OTP.dto";
+import { VerifyOTPResponseDto } from "../dto/response/verify_OTP.dto";
+import OTPAPI from "..";
 
-export const useVerifyOtp = (
-  options?: UseMutationOptions<VerifyOtpResponseDto, Error, VerifyOtpRequestDto>
+export const useVerifyOTP = (
+  options?: UseMutationOptions<VerifyOTPResponseDto, Error, VerifyOTPRequestDto>
 ) => {
   return useMutation({
-    mutationFn: OtpAPI.verifyOtp,
+    mutationFn: OTPAPI.verifyOTP,
     ...options,
   });
 };

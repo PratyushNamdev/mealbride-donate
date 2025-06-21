@@ -1,7 +1,7 @@
-import { useVerifyOtp } from "./verify_otp";
+import { useVerifyOTP } from "./verify_OTP";
 
-const OtpHooks = {
-  useVerifyOtp,
+const OTPHooks = {
+  useVerifyOTP,
 };
 
-export default OtpHooks;
+export default OTPHooks;

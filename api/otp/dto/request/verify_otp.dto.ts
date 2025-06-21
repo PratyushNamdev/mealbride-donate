@@ -1,4 +1,4 @@
-export interface VerifyOtpRequestDto {
+export interface VerifyOTPRequestDto {
   otp: string;
   mealId: string;
 }

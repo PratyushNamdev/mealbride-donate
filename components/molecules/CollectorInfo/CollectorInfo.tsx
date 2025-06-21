@@ -1,10 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
-import OtpModal from "@molecules/OTPModal";
+import OTPModal from "@molecules/OTPModal";
 
 interface CollectorInfoProps {
   mealId: string;
@@ -15,9 +14,14 @@ interface CollectorInfoProps {
     contact: number;
     createdAt: string;
   } | null;
+  isMealActive?: boolean;
 }
 
-export function CollectorInfo({ mealId, collector }: CollectorInfoProps) {
+export function CollectorInfo({
+  mealId,
+  collector,
+  isMealActive = false,
+}: CollectorInfoProps) {
   const getInitials = (name: string) => {
     if (!name) return "?";
     return name
@@ -90,7 +94,7 @@ export function CollectorInfo({ mealId, collector }: CollectorInfoProps) {
             </span>
           </div>
         </div>
-        <OtpModal mealId={mealId} />
+        {isMealActive && <OTPModal mealId={mealId} />}
       </CardContent>
     </Card>
   );

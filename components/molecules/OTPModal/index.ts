@@ -1,3 +1,3 @@
-import OtpModal from "./OtpModal";
+import OTPModal from "./OTPModal";
 
-export default OtpModal;
+export default OTPModal;

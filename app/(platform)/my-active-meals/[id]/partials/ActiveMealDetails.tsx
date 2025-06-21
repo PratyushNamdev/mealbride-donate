@@ -52,7 +52,11 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
     <div className="max-w-2xl mx-2 sm:mx-auto px-2">
       <MealDescription meal={data} />
       {data.collector && data.collectorId && (
-        <CollectorInfo collector={data.collector} mealId={data._id} />
+        <CollectorInfo
+          collector={data.collector}
+          mealId={data._id}
+          isMealActive={true}
+        />
       )}
       {isActive && (
         <div className="flex flex-col sm:flex-row gap-3 mb-15 mt-2">

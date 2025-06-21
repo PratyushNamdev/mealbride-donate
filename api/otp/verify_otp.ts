@@ -1,10 +1,10 @@
 import API from "../instance";
 import { Response } from "../types";
-import { VerifyOtpRequestDto } from "./dto/request/verify_otp.dto";
-import { VerifyOtpResponseDto } from "./dto/response/verify_otp.dto";
+import { VerifyOTPRequestDto } from "./dto/request/verify_OTP.dto";
+import { VerifyOTPResponseDto } from "./dto/response/verify_OTP.dto";
 
-export const verifyOtp = async (payload: VerifyOtpRequestDto) => {
-  const { data: response } = await API.post<Response<VerifyOtpResponseDto>>(
+export const verifyOTP = async (payload: VerifyOTPRequestDto) => {
+  const { data: response } = await API.post<Response<VerifyOTPResponseDto>>(
     "/meal/verify-otp",
     payload
   );
