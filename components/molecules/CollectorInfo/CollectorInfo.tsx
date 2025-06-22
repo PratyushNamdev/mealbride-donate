@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
-import OTPModal from "@molecules/OTPModal";
+import OTPDrawer from "@/app/(platform)/my-active-meals/[id]/partials/OTPDrawer";
 
 interface CollectorInfoProps {
   mealId: string;
@@ -14,13 +14,13 @@ interface CollectorInfoProps {
     contact: number;
     createdAt: string;
   } | null;
-  isMealActive?: boolean;
+  showOTPDrawer?: boolean;
 }
 
 export function CollectorInfo({
   mealId,
   collector,
-  isMealActive = false,
+  showOTPDrawer = false,
 }: CollectorInfoProps) {
   const getInitials = (name: string) => {
     if (!name) return "?";
@@ -94,7 +94,7 @@ export function CollectorInfo({
             </span>
           </div>
         </div>
-        {isMealActive && <OTPModal mealId={mealId} />}
+        {showOTPDrawer && <OTPDrawer mealId={mealId} />}
       </CardContent>
     </Card>
   );

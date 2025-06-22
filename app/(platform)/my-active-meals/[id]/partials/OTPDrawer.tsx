@@ -20,18 +20,13 @@ import { User } from "lucide-react";
 import OTPHooks from "@/api/OTP/hooks";
 import SuccessDialog from "./SuccessDialog";
 
-interface OTPModalProps {
+interface OTPDrawerProps {
   mealId: string;
 }
 
 const OTP_LENGTH = 4;
-const QUERY_KEYS = [
-  "get-active-meal-detail",
-  "get-active-meal",
-  "get-meal-history",
-] as const;
 
-export default function OTPModal({ mealId }: OTPModalProps) {
+export default function OTPDrawer({ mealId }: OTPDrawerProps) {
   const queryClient = useQueryClient();
   const router = useRouter();
 
@@ -40,21 +35,21 @@ export default function OTPModal({ mealId }: OTPModalProps) {
   const [showSuccessPopUp, setShowSuccessPopup] = useState(false);
 
   const onGoHome = () => {
-    console.log("invalidating data in home");
-    QUERY_KEYS.forEach((key) =>
-      queryClient.invalidateQueries({ queryKey: [key] })
-    );
-    setShowSuccessPopup(false);
     router.replace("/");
+    console.log("invalidating data in home");
+    queryClient.invalidateQueries({
+      queryKey: ["get-active-meal-detail", mealId],
+    });
+    setShowSuccessPopup(false);
   };
 
   const onViewHistory = () => {
-    console.log("invalidating data in history");
-    QUERY_KEYS.forEach((key) =>
-      queryClient.invalidateQueries({ queryKey: [key] })
-    );
-    setShowSuccessPopup(false);
     router.replace("/my-meals-history");
+    queryClient.invalidateQueries({
+      queryKey: ["get-active-meal-detail", mealId],
+    });
+    setShowSuccessPopup(false);
+    console.log("invalidating data in history");
   };
 
   const onClose = () => {

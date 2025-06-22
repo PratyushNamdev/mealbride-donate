@@ -22,11 +22,9 @@ export default function SuccessDialog({
   onGoHome: () => void;
   onViewHistory: () => void;
 }) {
-  const router = useRouter();
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="bg-gradient-to-br from-green-50 to-white rounded-3xl p-6 max-w-md mx-auto shadow-2xl border-2 border-green-100">
-        {/* <div > */}
         <DialogHeader className="flex flex-col items-center gap-2 pb-4 border-b border-green-200">
           <div className="p-3 bg-green-100 rounded-full">
             <Trophy className="w-10 h-10 text-green-600" />
@@ -60,7 +58,6 @@ export default function SuccessDialog({
             View Donation History
           </Button>
         </DialogFooter>
-        {/* </div> */}
       </DialogContent>
     </Dialog>
   );

@@ -1,7 +1,7 @@
 import { verifyOTP } from "./verify_OTP";
 
-const OTPAPI = {
+const OTP_API = {
   verifyOTP,
 };
 
-export default OTPAPI;
+export default OTP_API;

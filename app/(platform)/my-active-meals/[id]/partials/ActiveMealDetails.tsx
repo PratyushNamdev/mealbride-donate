@@ -55,7 +55,7 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
         <CollectorInfo
           collector={data.collector}
           mealId={data._id}
-          isMealActive={true}
+          showOTPDrawer={true}
         />
       )}
       {isActive && (
