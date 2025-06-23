@@ -9,7 +9,6 @@ import {
   DialogTitle,
 } from "@ui";
 import { Trophy } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 export default function SuccessDialog({
   open,
