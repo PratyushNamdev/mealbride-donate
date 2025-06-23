@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import {
   Button,
@@ -18,44 +16,20 @@ import {
 } from "@ui";
 import { User } from "lucide-react";
 import OTPHooks from "@/api/OTP/hooks";
-import SuccessDialog from "./SuccessDialog";
 
 interface OTPDrawerProps {
   mealId: string;
+  setShowSuccessPopup: (show: boolean) => void;
 }
 
 const OTP_LENGTH = 4;
 
-export default function OTPDrawer({ mealId }: OTPDrawerProps) {
-  const queryClient = useQueryClient();
-  const router = useRouter();
-
+export default function OTPDrawer({
+  mealId,
+  setShowSuccessPopup,
+}: OTPDrawerProps) {
   const [open, setOpen] = useState(false);
   const [OTP, setOTP] = useState("");
-  const [showSuccessPopUp, setShowSuccessPopup] = useState(false);
-
-  const onGoHome = () => {
-    router.replace("/");
-    console.log("invalidating data in home");
-    queryClient.invalidateQueries({
-      queryKey: ["get-active-meal-detail", mealId],
-    });
-    setShowSuccessPopup(false);
-  };
-
-  const onViewHistory = () => {
-    router.replace("/my-meals-history");
-    queryClient.invalidateQueries({
-      queryKey: ["get-active-meal-detail", mealId],
-    });
-    setShowSuccessPopup(false);
-    console.log("invalidating data in history");
-  };
-
-  const onClose = () => {
-    onGoHome();
-    setShowSuccessPopup(false);
-  };
 
   const { mutate: verifyOTP, isPending } = OTPHooks.useVerifyOTP({
     onSuccess: (response) => {
@@ -79,12 +53,6 @@ export default function OTPDrawer({ mealId }: OTPDrawerProps) {
 
   return (
     <>
-      <SuccessDialog
-        open={showSuccessPopUp}
-        onClose={onClose}
-        onGoHome={onGoHome}
-        onViewHistory={onViewHistory}
-      />
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerTrigger asChild>
           <Button

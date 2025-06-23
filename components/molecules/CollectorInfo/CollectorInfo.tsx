@@ -15,12 +15,14 @@ interface CollectorInfoProps {
     createdAt: string;
   } | null;
   showOTPDrawer?: boolean;
+  setShowSuccessPopup?: (show: boolean) => void;
 }
 
 export function CollectorInfo({
   mealId,
   collector,
   showOTPDrawer = false,
+  setShowSuccessPopup = () => {},
 }: CollectorInfoProps) {
   const getInitials = (name: string) => {
     if (!name) return "?";
@@ -94,7 +96,12 @@ export function CollectorInfo({
             </span>
           </div>
         </div>
-        {showOTPDrawer && <OTPDrawer mealId={mealId} />}
+        {showOTPDrawer && (
+          <OTPDrawer
+            mealId={mealId}
+            setShowSuccessPopup={setShowSuccessPopup}
+          />
+        )}
       </CardContent>
     </Card>
   );
