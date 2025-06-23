@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { User, Calendar, PhoneIcon } from "lucide-react";
 import { format } from "date-fns";
+import OTPDrawer from "@/app/(platform)/my-active-meals/[id]/partials/OTPDrawer";
 
 interface CollectorInfoProps {
-  collectorId: string;
+  mealId: string;
   collector: {
     username: string;
     profilePicture: string;
@@ -14,9 +14,16 @@ interface CollectorInfoProps {
     contact: number;
     createdAt: string;
   } | null;
+  showOTPDrawer?: boolean;
+  setShowSuccessPopup?: (show: boolean) => void;
 }
 
-export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
+export function CollectorInfo({
+  mealId,
+  collector,
+  showOTPDrawer = false,
+  setShowSuccessPopup = () => {},
+}: CollectorInfoProps) {
   const getInitials = (name: string) => {
     if (!name) return "?";
     return name
@@ -89,10 +96,12 @@ export function CollectorInfo({ collectorId, collector }: CollectorInfoProps) {
             </span>
           </div>
         </div>
-        <Button className="w-full bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer">
-          <User className="h-4 w-4 mr-2" />
-          Confirm Handover
-        </Button>{" "}
+        {showOTPDrawer && (
+          <OTPDrawer
+            mealId={mealId}
+            setShowSuccessPopup={setShowSuccessPopup}
+          />
+        )}
       </CardContent>
     </Card>
   );

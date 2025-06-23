@@ -5,6 +5,7 @@ import MealDescription from "./MealDescription";
 import CollectorInfo from "./CollectorInfo";
 import AddressFormDialog from "./AddressFormDialiog";
 import AddressCard from "./AddressCard";
+
 export {
   MealBanner,
   MealCard,

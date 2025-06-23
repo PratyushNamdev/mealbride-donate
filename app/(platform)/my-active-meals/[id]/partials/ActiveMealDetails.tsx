@@ -5,9 +5,37 @@ import CancelBooking from "./Buttons/CancelBooking";
 import CancelDonation from "./Buttons/CancelDonation";
 import { Skeleton } from "@ui";
 import { useRouter } from "next/navigation";
+import SuccessDialog from "./SuccessDialog";
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function ActiveMealDetails({ mealId }: { mealId: string }) {
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const [showSuccessPopUp, setShowSuccessPopup] = useState(false);
+
+  const onGoHome = () => {
+    router.replace("/");
+    console.log("invalidating data in home");
+    queryClient.invalidateQueries({
+      queryKey: ["get-active-meal-detail", mealId],
+    });
+    setShowSuccessPopup(false);
+  };
+
+  const onViewHistory = () => {
+    router.replace("/my-meals-history");
+    queryClient.invalidateQueries({
+      queryKey: ["get-active-meal-detail", mealId],
+    });
+    setShowSuccessPopup(false);
+    console.log("invalidating data in history");
+  };
+
+  const onClose = () => {
+    onGoHome();
+    setShowSuccessPopup(false);
+  };
 
   const { data, isPending, isError, error } = MealHooks.useGetActiveMealDetails(
     {
@@ -50,11 +78,19 @@ export default function ActiveMealDetails({ mealId }: { mealId: string }) {
 
   return (
     <div className="max-w-2xl mx-2 sm:mx-auto px-2">
+      <SuccessDialog
+        open={showSuccessPopUp}
+        onClose={onClose}
+        onGoHome={onGoHome}
+        onViewHistory={onViewHistory}
+      />
       <MealDescription meal={data} />
       {data.collector && data.collectorId && (
         <CollectorInfo
           collector={data.collector}
-          collectorId={data.collectorId}
+          mealId={data._id}
+          showOTPDrawer={true}
+          setShowSuccessPopup={setShowSuccessPopup}
         />
       )}
       {isActive && (
