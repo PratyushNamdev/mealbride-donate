@@ -1,5 +1,4 @@
 "use client";
-
 import { logout } from "../../../lib/logout";
 import { Button } from "@ui";
 import { LogOut } from "lucide-react";
@@ -13,13 +12,12 @@ export default function LogOutButton() {
   };
   return (
     <Button
-      variant="primary"
-      size="lg"
-      className="hover:bg-[#00734a] text-white font-semibold px-6 py-3 rounded-md shadow-sm select-none flex items-center gap-2 cursor-pointer"
+      variant="outline"
       onClick={handleLogout}
+      className="flex items-center gap-2 text-sm text-red-500 px-2 hover:bg-red-50 hover:text-red-600 hover:border-red-500  cursor-pointer"
     >
+      <LogOut className="h-4 w-4" />
       Logout
-      <LogOut className="w-4 h-4" />
     </Button>
   );
 }
