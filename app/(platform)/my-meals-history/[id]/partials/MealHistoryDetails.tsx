@@ -43,10 +43,7 @@ export default function MealHistoryDetails({ mealId }: { mealId: string }) {
     <div className="max-w-2xl mx-2 sm:mx-auto px-2 mb-8">
       <MealDescription meal={data} />
       {data.collector && data.collectorId && (
-        <CollectorInfo
-          collector={data.collector}
-          collectorId={data.collectorId}
-        />
+        <CollectorInfo collector={data.collector} mealId={data._id} />
       )}
     </div>
   );
