@@ -1,4 +1,4 @@
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@ui";
 import { Ban } from "lucide-react";

@@ -12,12 +12,12 @@ import {
 } from "@ui";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import DonorHooks from "@DonorHooks";
+import DonorHooks from "@/apiCalls/donor/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   UpdateDonorProfileRequestDto,
   updateDonorProfileRequestSchema,
-} from "@/api/donor/dto/request/update_donor_profile";
+} from "@/apiCalls/donor/dto/request/update_donor_profile";
 
 export default function ProfileFormDialog({
   open,

@@ -1,6 +1,6 @@
 "use client";
 
-import DonorHooks from "@DonorHooks";
+import DonorHooks from "@/apiCalls/donor/hooks";
 import { useEffect, useState } from "react";
 import { AddressCard, AddressFormDialog } from "@molecules";
 import ProfileFormDialog from "./ProfileFormDialog";

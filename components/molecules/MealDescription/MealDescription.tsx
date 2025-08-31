@@ -1,4 +1,4 @@
-import { GetActiveMealDetailsResponseDto } from "@/api/meals/dto/response/get_active_meal_details.dto";
+import { GetActiveMealDetailsResponseDto } from "@/apiCalls/meals/dto/response/get_active_meal_details.dto";
 import MealIntro from "./MealIntro";
 import MealInfo from "./MealInfo";
 

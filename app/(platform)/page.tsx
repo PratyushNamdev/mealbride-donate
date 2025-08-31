@@ -1,4 +1,4 @@
-import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
+import { GetDonorProfileResponseDTO } from "@/apiCalls/donor/dto/response/get_donor_profile.dto";
 import {
   HeroImage,
   HeroSection,

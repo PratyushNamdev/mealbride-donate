@@ -14,12 +14,12 @@ import {
 } from "@ui";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import DonorHooks from "@DonorHooks";
+import DonorHooks from "@/apiCalls/donor/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   UpdateDonorAddressRequestDto,
   updateDonorAddressRequestSchema,
-} from "@/api/donor/dto/request/update_donor_address.dto";
+} from "@/apiCalls/donor/dto/request/update_donor_address.dto";
 import axios from "axios";
 export default function AddressFormDialog({
   open,

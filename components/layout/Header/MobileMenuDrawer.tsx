@@ -6,7 +6,7 @@ import { HandPlatter, History, Home, LogOut, Menu } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { logout } from "../../../lib/logout";
-import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
+import { GetDonorProfileResponseDTO } from "@/apiCalls/donor/dto/response/get_donor_profile.dto";
 
 interface MobileMenuDrawerProps {
   userData: GetDonorProfileResponseDTO | undefined;
@@ -26,7 +26,7 @@ export function MobileMenuDrawer({
     setIsSheetOpen(false);
     await logout(router);
   };
- 
+
   const handleAccountClick = () => {
     setIsSheetOpen(false);
     router.push(`/profile/donor/${userData?._id}`);

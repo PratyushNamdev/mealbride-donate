@@ -1,9 +1,9 @@
 "use client";
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import {
   PostMealRequestDto,
   postMealRequestSchema,
-} from "@/api/meals/dto/request/post_meal.dto";
+} from "@/apiCalls/meals/dto/request/post_meal.dto";
 import { Input, Textarea, Label, Button, Switch } from "@ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMemo, useRef, useState } from "react";
@@ -13,7 +13,7 @@ import { BackButton } from "@atoms";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
-import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
+import { GetDonorProfileResponseDTO } from "@/apiCalls/donor/dto/response/get_donor_profile.dto";
 
 interface DonateNowFormProps {
   profile: GetDonorProfileResponseDTO | null;

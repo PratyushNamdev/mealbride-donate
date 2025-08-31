@@ -1,4 +1,4 @@
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@ui";
 import { X, Loader2 } from "lucide-react";
@@ -8,10 +8,7 @@ import { toast } from "sonner";
 export default function CancelDonation({ mealId }: { mealId: string }) {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const {
-    mutate: cancelDonation,
-    isPending,
-  } = MealHooks.useCancelMeal({
+  const { mutate: cancelDonation, isPending } = MealHooks.useCancelMeal({
     onSuccess: () => {
       console.log("Donation cancelled successfully");
       toast.success("Donation cancelled successfully");

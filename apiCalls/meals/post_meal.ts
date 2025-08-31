@@ -1,5 +1,5 @@
-import API from "@/api/instance";
-import { Response } from "@/api/types";
+import API from "@/apiCalls/instance";
+import { Response } from "@/apiCalls/types";
 import { PostMealRequestDto } from "./dto/request/post_meal.dto";
 import { PostMealResponseDto } from "./dto/response/post_meal.dto";
 

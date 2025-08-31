@@ -5,7 +5,7 @@ import { MobileMenuDrawer } from "./MobileMenuDrawer";
 import NotificationDrawer from "./NotificationDrawer";
 import { Bell } from "lucide-react";
 import { useNotifications } from "@/providers/notification_provider";
-import DonorHooks from "@DonorHooks";
+import DonorHooks from "@/apiCalls/donor/hooks";
 
 type HeaderProps = {
   donorId: string;

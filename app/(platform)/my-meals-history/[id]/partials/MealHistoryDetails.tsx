@@ -1,5 +1,5 @@
 "use client";
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import { CollectorInfo, MealDescription, NoMealFound } from "@molecules";
 import { Skeleton } from "@ui";
 import { useRouter } from "next/navigation";

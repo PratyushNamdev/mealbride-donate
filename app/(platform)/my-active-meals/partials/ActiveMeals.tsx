@@ -1,5 +1,5 @@
 "use client";
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import { MealCard, NoMealFound } from "@molecules";
 import { Skeleton } from "@ui";
 

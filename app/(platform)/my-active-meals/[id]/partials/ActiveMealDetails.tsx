@@ -1,5 +1,5 @@
 "use client";
-import MealHooks from "@MealHooks";
+import MealHooks from "@/apiCalls/meals/hooks";
 import { CollectorInfo, MealDescription, NoMealFound } from "@molecules";
 import CancelBooking from "./Buttons/CancelBooking";
 import CancelDonation from "./Buttons/CancelDonation";

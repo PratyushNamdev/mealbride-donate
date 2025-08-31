@@ -1,6 +1,6 @@
-import { GetDonorProfileResponseDTO } from "@/api/donor/dto/response/get_donor_profile.dto";
+import { GetDonorProfileResponseDTO } from "@/apiCalls/donor/dto/response/get_donor_profile.dto";
 import { cookies } from "next/headers";
-import { Response } from "@/api/types";
+import { Response } from "@/apiCalls/types";
 export async function getDonorProfileServer() {
   const cookieStore = cookies();
   const donorId = (await cookieStore).get("donor_id")?.value;
