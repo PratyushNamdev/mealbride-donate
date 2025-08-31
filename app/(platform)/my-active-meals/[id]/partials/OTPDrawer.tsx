@@ -15,7 +15,7 @@ import {
   InputOTPSlot,
 } from "@ui";
 import { User } from "lucide-react";
-import OTPHooks from "@/api/OTP/hooks";
+import OTPHooks from "@OTPHooks";
 
 interface OTPDrawerProps {
   mealId: string;
