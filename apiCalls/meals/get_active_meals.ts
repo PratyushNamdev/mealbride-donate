@@ -1,5 +1,5 @@
-import API from "@/api/instance";
-import { Response } from "@/api/types";
+import API from "@/apiCalls/instance";
+import { Response } from "@/apiCalls/types";
 import { GetActiveMealsResponseDto } from "./dto/response/get_active_meals.dto";
 
 export const getActiveMeals = async () => {
