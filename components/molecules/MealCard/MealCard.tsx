@@ -1,4 +1,4 @@
-import { GetActiveMealDto } from "@/api/meals/dto/response/get_active_meals.dto";
+import { GetActiveMealDto } from "@/apiCalls/meals/dto/response/get_active_meals.dto";
 import { GetDetails, StatusBadge, VegBadge } from "@atoms";
 import { Users } from "lucide-react";
 import Image from "next/image";
