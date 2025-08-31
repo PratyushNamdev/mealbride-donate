@@ -6,7 +6,7 @@ import { AddressCard, AddressFormDialog } from "@molecules";
 import ProfileFormDialog from "./ProfileFormDialog";
 import DonorProfileCard from "./DonorProfileCard";
 import DonorProfileSkeleton from "./DonorProfileSkeleton";
-import { BackButton, LogOutButton } from "@atoms";
+import { LogOutButton } from "@atoms";
 
 export default function DonorProfile({ donorId }: { donorId: string }) {
   const { data, isPending, isError } = DonorHooks.useGetDonorProfile(donorId);

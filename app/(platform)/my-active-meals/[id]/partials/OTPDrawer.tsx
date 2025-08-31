@@ -32,13 +32,13 @@ export default function OTPDrawer({
   const [OTP, setOTP] = useState("");
 
   const { mutate: verifyOTP, isPending } = OTPHooks.useVerifyOTP({
-    onSuccess: (response) => {
+    onSuccess: () => {
       setShowSuccessPopup(true);
       setOTP("");
       setOpen(false);
       toast.success("Donation done successfully");
     },
-    onError: (error) => {
+    onError: () => {
       toast.error("Failed to verify OTP. Please try again.");
     },
   });

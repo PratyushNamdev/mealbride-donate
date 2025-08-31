@@ -3,9 +3,12 @@ import axios, {
   AxiosError,
   AxiosResponse,
 } from "axios";
-
+let baseURL = "http://localhost:3001";
+if (process.env.ENV === "production") {
+  baseURL = process.env.BACKEND_URL!;
+}
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001",
+  baseURL: baseURL,
   withCredentials: true,
 });
 

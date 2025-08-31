@@ -7,9 +7,15 @@ export async function getDonorProfileServer() {
 
   if (!donorId) return null;
 
-  const res = await fetch(`http://localhost:3001/donor/${donorId}`, {
+  let baseURL = "http://localhost:3001";
+  if (process.env.ENV === "production") {
+    baseURL = process.env.BACKEND_URL!;
+  }
+
+  const res = await fetch(`${baseURL}/donor/${donorId}`, {
     cache: "no-store",
   });
+
   if (!res.ok) return null;
   const response: Response<GetDonorProfileResponseDTO> = await res.json();
   return response.data!;

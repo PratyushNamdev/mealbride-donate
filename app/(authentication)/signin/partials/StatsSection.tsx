@@ -8,8 +8,8 @@ export default function StatsSection() {
         Our Progress & Global Impact
       </h1>
       <p className="text-lg text-center text-gray-600">
-        Track our growing impact while understanding the global challenge we're
-        working together to solve.
+        Track our growing impact while understanding the global challenge
+        we&apos;re working together to solve.
       </p>
       <PlatformStats />
       <GlobalStats />
