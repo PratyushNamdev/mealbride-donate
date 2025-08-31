@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { GetActiveMealDto } from "@/api/meals/dto/response/get_active_meals.dto";
+import { GetActiveMealDto } from "@/apiCalls/meals/dto/response/get_active_meals.dto";
 import { Users } from "lucide-react";
 import { StatusBadge, VegBadge } from "@atoms";
 
