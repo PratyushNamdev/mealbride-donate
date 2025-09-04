@@ -9,7 +9,7 @@ export async function getDonorProfileServer() {
 
   let baseURL = "http://localhost:3001";
   if (process.env.ENV === "production") {
-    baseURL = process.env.BACKEND_URL!;
+    baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
   }
 
   const res = await fetch(`${baseURL}/donor/${donorId}`, {
