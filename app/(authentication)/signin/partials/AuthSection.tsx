@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function AuthSection() {
   const handleGoogleLogin = () => {
-    let baseurl =
+    const baseurl =
       process.env.NEXT_PUBLIC_ENV === "production"
         ? process.env.NEXT_PUBLIC_BACKEND_URL!
         : "http://localhost:3001";
