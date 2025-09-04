@@ -15,7 +15,7 @@ const ReactQueryProvider = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      {process.env.NODE_ENV === "development" && (
+      {process.env.NEXT_PUBLIC_ENV === "development" && (
         <ReactQueryDevtools initialIsOpen={false} />
       )}
     </QueryClientProvider>

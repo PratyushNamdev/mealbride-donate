@@ -4,7 +4,7 @@ import axios, {
   AxiosResponse,
 } from "axios";
 let baseURL = "http://localhost:3001";
-if (process.env.ENV === "production") {
+if (process.env.NEXT_PUBLIC_ENV === "production") {
   baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 }
 const API = axios.create({
